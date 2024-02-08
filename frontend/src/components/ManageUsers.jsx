@@ -13,7 +13,7 @@ function ManageUsers() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/ManageUsers');
+        const response = await axios.get('https://tournahub-hlr8.onrender.com/ManageUsers');
         setUsers(response.data);
       } catch (error) {
         console.log(error);
@@ -32,7 +32,7 @@ function ManageUsers() {
     } else {
       // Otherwise, filter users based on the search term
       try {
-        const response = await axios.get(`http://localhost:3001/searchUsers/${searchTerm}`);
+        const response = await axios.get(`https://tournahub-hlr8.onrender.com/searchUsers/${searchTerm}`);
         setFilteredUsers(response.data);
       } catch (error) {
         console.log(error);
@@ -43,7 +43,7 @@ function ManageUsers() {
   const handleSuspend = async (id) => {
     if (window.confirm('Confirm suspension?')) {
       try {
-        await axios.put(`http://localhost:3001/suspendUser/${id}`);
+        await axios.put(`https://tournahub-hlr8.onrender.com/suspendUser/${id}`);
         window.location.reload()
       } catch (error) {
         console.log(error);

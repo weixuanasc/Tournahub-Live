@@ -75,7 +75,7 @@ function ViewApplicants() {
     if (!tournamentId) return;
     try {
       const { data } = await axios.get(
-        `http://localhost:3001/api/applicationstatus/getApplicationOfTournament/${tournamentId}`
+        `https://tournahub-hlr8.onrender.com/api/applicationstatus/getApplicationOfTournament/${tournamentId}`
       );
       setApplicants(data.message);
     } catch (error) {
@@ -86,7 +86,7 @@ function ViewApplicants() {
   const fetchTournamentData = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:3001/getTournamentDetails/${tournamentId}`
+        `https://tournahub-hlr8.onrender.com/getTournamentDetails/${tournamentId}`
       );
       setTournament(data);
     } catch (error) {
@@ -97,7 +97,7 @@ function ViewApplicants() {
   const updateApplicationStatus = async (applicationId, action) => {
     try {
       await axios.put(
-        `http://localhost:3001/api/applicationstatus/updateApplicationStatus/${applicationId}`,
+        `https://tournahub-hlr8.onrender.com/api/applicationstatus/updateApplicationStatus/${applicationId}`,
         { action }
       );
       fetchApplicationsOfTournaments();

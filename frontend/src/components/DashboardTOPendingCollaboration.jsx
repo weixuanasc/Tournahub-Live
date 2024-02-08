@@ -15,7 +15,7 @@ function DashboardTOPendingCollaboration() {
   
   useEffect(() => {
         // Fetch tournaments when the component mounts
-        axios.get('http://localhost:3001/getTournaments')
+        axios.get('https://tournahub-hlr8.onrender.com/getTournaments')
           .then((response) => {
             setTournaments(response.data);
           })
@@ -29,7 +29,7 @@ function DashboardTOPendingCollaboration() {
       
       useEffect(() => {
         // Fetch tournaments when the component mounts
-        axios.get('http://localhost:3001/getStatus')
+        axios.get('https://tournahub-hlr8.onrender.com/getStatus')
           .then((response) => {
             setStatus(response.data);
           })
@@ -45,7 +45,7 @@ function DashboardTOPendingCollaboration() {
         const fetchData = async () => {
           try {
             const response = await axios.get(
-              "http://localhost:3001/getCurrentUser"
+              "https://tournahub-hlr8.onrender.com/getCurrentUser"
             );
             setUser(response.data);
           } catch (error) {
@@ -71,7 +71,7 @@ function DashboardTOPendingCollaboration() {
         // Update status
         try {
           await axios.put(
-            `http://localhost:3001/updateStatus/${statusIdToUpdate}`,
+            `https://tournahub-hlr8.onrender.com/updateStatus/${statusIdToUpdate}`,
             updatedStatus
           );
           console.log('Status updated successfully');
@@ -88,7 +88,7 @@ function DashboardTOPendingCollaboration() {
           // Update the tournaments database
           try {
             await axios.put(
-              `http://localhost:3001/updateTournamentCollaboratorId/${tournamentIdToUpdate}`,
+              `https://tournahub-hlr8.onrender.com/updateTournamentCollaboratorId/${tournamentIdToUpdate}`,
               { collaboratorId: updatedStatus.collaboratorId }
             );
             console.log('Tournament updated successfully');

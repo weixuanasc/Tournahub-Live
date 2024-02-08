@@ -9,7 +9,7 @@ const stripePromise = loadStripe("pk_test_51OZDZ5GNBcwxwaFCTi4kYxQqVaQsTqdeNA0I7
 function SponsorshipModels() {
   const handleCheckoutIcon = async () => {
     try {
-      const response = await axios.post("http://localhost:3001/create-checkout-session-icon");
+      const response = await axios.post("https://tournahub-hlr8.onrender.com/create-checkout-session-icon");
 
       const stripe = await stripePromise;
       const result = await stripe.redirectToCheckout({
@@ -26,7 +26,7 @@ function SponsorshipModels() {
 
   const handleCheckoutTournament = async () => {
     try {
-      const response = await axios.post("http://localhost:3001/create-checkout-session-tournament");
+      const response = await axios.post("https://tournahub-hlr8.onrender.com/create-checkout-session-tournament");
 
       const stripe = await stripePromise;
       const result = await stripe.redirectToCheckout({
@@ -43,7 +43,7 @@ function SponsorshipModels() {
 
   const handleCheckoutArticle = async () => {
     try {
-      const response = await axios.post("http://localhost:3001/create-checkout-session-article");
+      const response = await axios.post("https://tournahub-hlr8.onrender.com/create-checkout-session-article");
 
       const stripe = await stripePromise;
       const result = await stripe.redirectToCheckout({

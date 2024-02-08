@@ -120,7 +120,7 @@ const forgetPassword = (req,res) => {
       from: 'tournahub004@gmail.com',
       to: user.email,
       subject: 'Reset Password - Tournahub',
-      text: `http://localhost:5173/ResetPassword/${user._id}/${fPWToken}`
+      text: `https://tournahub-hlr8.onrender.com/ResetPassword/${user._id}/${fPWToken}`
     };
     
     transporter.sendMail(mailOptions, function(error, info){

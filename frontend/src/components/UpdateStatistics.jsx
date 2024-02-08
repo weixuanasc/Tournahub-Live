@@ -13,7 +13,7 @@ function EditStatistics() {
   useEffect(() => {
     // Fetch statistics when the component mounts
     axios
-      .get(`http://localhost:3001/getStatistics/${id}`)
+      .get(`https://tournahub-hlr8.onrender.com/getStatistics/${id}`)
       .then((response) => {
         setStatisticsDetails(response.data);
         // Initialize updatedStatistics with the fetched data
@@ -33,7 +33,7 @@ function EditStatistics() {
     console.log('Updated Statistics:', updatedStatisticsData);
   
     axios
-    .put(`http://localhost:3001/updateStatistics/${statisticsId}`, updatedStatisticsData)
+    .put(`https://tournahub-hlr8.onrender.com/updateStatistics/${statisticsId}`, updatedStatisticsData)
     .then((result) => {
       console.log(result);
       alert('Statistics updated successfully');

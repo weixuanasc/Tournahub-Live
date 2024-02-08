@@ -29,7 +29,7 @@ function Signup() {
     formData.append("verification", verification);
     formData.append("skillLevel", skillLevel);
     const submit = await axios
-      .post("http://localhost:3001/register", formData, {
+      .post("https://tournahub-hlr8.onrender.com/register", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((result) => {
@@ -43,7 +43,7 @@ function Signup() {
   useEffect(() => {
     const fetchSports = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/ManageSports");
+        const response = await axios.get("https://tournahub-hlr8.onrender.com/ManageSports");
         setSports(response.data);
       } catch (error) {
         console.log(error);

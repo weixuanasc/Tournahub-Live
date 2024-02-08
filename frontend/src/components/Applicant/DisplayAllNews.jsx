@@ -15,7 +15,7 @@ const ApplicantHome = () => {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3001/getCurrentUser", {
+      const { data } = await axios.get("https://tournahub-hlr8.onrender.com/getCurrentUser", {
         withCredentials: true,
       });
       setUser(data);
@@ -29,7 +29,7 @@ const ApplicantHome = () => {
   const fetchAllNews = async () => {
     try {
       const { status, data } = await axios.get(
-        "http://localhost:3001/api/news/all"
+        "https://tournahub-hlr8.onrender.com/api/news/all"
       );
       setNewsData(data.message);
     } catch (error) {
@@ -62,7 +62,7 @@ const ApplicantHome = () => {
                     <div className="newsColumns">
                       <img
                         className="fixed-size-image"
-                        src={`http://localhost:3001/images/${news.photo}`}
+                        src={`https://tournahub-hlr8.onrender.com/images/${news.photo}`}
                         alt={news.title}
                         onClick={() => handleTitleClick(news._id)}
                       />
@@ -97,7 +97,7 @@ const ApplicantHome = () => {
                       <div className="newsColumns">
                         <img
                           className="fixed-size-image"
-                          src={`http://localhost:3001/images/${news.photo}`}
+                          src={`https://tournahub-hlr8.onrender.com/images/${news.photo}`}
                           alt={news.title}
                           onClick={() => handleTitleClick(news._id)}
                         />

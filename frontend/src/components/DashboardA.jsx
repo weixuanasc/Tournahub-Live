@@ -14,7 +14,7 @@ function DashboardA() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/home")
+      .get("https://tournahub-hlr8.onrender.com/home")
       .then((res) => {
         if (res.data === "Login is successful") {
           // Set and store verify in localStorage
@@ -43,7 +43,7 @@ function DashboardA() {
         } else {
           // If not, fetch user data from the server
           const response = await axios.get(
-            "http://localhost:3001/getCurrentUser"
+            "https://tournahub-hlr8.onrender.com/getCurrentUser"
           );
           setUser(response.data);
           // Store user data in localStorage

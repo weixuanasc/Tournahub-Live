@@ -19,7 +19,7 @@ const UpdateProfile = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3001/getCurrentUser" ,
+          "https://tournahub-hlr8.onrender.com/getCurrentUser" ,
         );
         setUser(response.data);
       } catch (error) {
@@ -35,7 +35,7 @@ const UpdateProfile = () => {
   useEffect(() => {
     // Fetch the list of sports from the database
     axios
-      .get('http://localhost:3001/getSports')
+      .get('https://tournahub-hlr8.onrender.com/getSports')
       .then((response) => {
         setSportsList(response.data);
       })
@@ -45,7 +45,7 @@ const UpdateProfile = () => {
   const Update = (e) => {
     e.preventDefault();
     axios
-      .put("http://localhost:3001/updateProfile/", {
+      .put("https://tournahub-hlr8.onrender.com/updateProfile/", {
         name,
         email,
         interestedSport,

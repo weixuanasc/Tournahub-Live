@@ -19,7 +19,7 @@ function AddMatches() {
     const handleSubmit = (e) => {
       e.preventDefault();
       axios
-        .post('http://localhost:3001/CreateMatches', 
+        .post('https://tournahub-hlr8.onrender.com/CreateMatches', 
         { tournamentId, MatchNumber, MatchName, MatchDate, MatchTime, Player1, Player2, Player1_Score, Player2_Score, Winner })
         .then((result) => {
           console.log(result);

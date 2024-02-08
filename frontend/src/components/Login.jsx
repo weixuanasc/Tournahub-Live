@@ -13,7 +13,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://localhost:3001/login", { email, password })
+      .post("https://tournahub-hlr8.onrender.com/login", { email, password })
       .then((res) => {
         if (res.data.Status === "Login is successful") {
           if (res.data.usertype === "systemadministrator") {

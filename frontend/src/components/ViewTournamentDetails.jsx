@@ -5,7 +5,7 @@ import SelectNavbar from "./SelectNavbar";
 import jsPDF from "jspdf";
 
 function ViewTournamentDetails() {
-  const domainName = "http://localhost:3001" ;
+  const domainName = "https://tournahub-hlr8.onrender.com" ;
   const [tournamentDetails, setTournamentDetails] = useState({});
   const [matchDetails, setMatchDetails] = useState({});
   const [rankingTableDetails, setRankingTableDetails] = useState({});
@@ -18,7 +18,7 @@ function ViewTournamentDetails() {
 
   useEffect(() => {
     // Fetch tournament details when the component mounts
-    axios.get(`http://localhost:3001/getTournamentDetails/${id}`)
+    axios.get(`https://tournahub-hlr8.onrender.com/getTournamentDetails/${id}`)
       .then((response) => {
         setTournamentDetails(response.data);
       })
@@ -33,7 +33,7 @@ function ViewTournamentDetails() {
 
   useEffect(() => {
     // Fetch match details when the component mounts
-    axios.get(`http://localhost:3001/getMatches/${id}`)
+    axios.get(`https://tournahub-hlr8.onrender.com/getMatches/${id}`)
       .then((response) => {
         setMatchDetails(response.data);
       })
@@ -47,7 +47,7 @@ function ViewTournamentDetails() {
 
   useEffect(() => {
     // Fetch ranking table details when the component mounts
-    axios.get(`http://localhost:3001/getRankingTable/${id}`)
+    axios.get(`https://tournahub-hlr8.onrender.com/getRankingTable/${id}`)
       .then((response) => {
         setRankingTableDetails(response.data);
       })
@@ -61,7 +61,7 @@ function ViewTournamentDetails() {
 
   useEffect(() => {
     // Fetch statistics table details when the component mounts
-    axios.get(`http://localhost:3001/getStatistics/${id}`)
+    axios.get(`https://tournahub-hlr8.onrender.com/getStatistics/${id}`)
       .then((response) => {
         setStatisticsDetails(response.data);
       })
@@ -79,7 +79,7 @@ function ViewTournamentDetails() {
   };
 
   const exportScoresheet = () =>{
-    window.open(`http://localhost:3001/scoresheet/${tournamentDetails.tournamentSport}.pdf`, "_blank", "noreferrer")
+    window.open(`https://tournahub-hlr8.onrender.com/scoresheet/${tournamentDetails.tournamentSport}.pdf`, "_blank", "noreferrer")
   }
 
   const exportMatches = () => {

@@ -12,7 +12,7 @@ const UserApplicationStatus = () => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:3001/getCurrentUser",
+          "https://tournahub-hlr8.onrender.com/getCurrentUser",
           {
             withCredentials: true,
           }
@@ -32,7 +32,7 @@ const UserApplicationStatus = () => {
     const fetchAppliedTournaments = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/applicationstatus/getUserApplications/${user?._id}`
+          `https://tournahub-hlr8.onrender.com/api/applicationstatus/getUserApplications/${user?._id}`
         );
         setApplications(response.data); // Update here
       } catch (error) {

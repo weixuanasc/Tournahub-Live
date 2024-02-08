@@ -12,7 +12,7 @@ function UploadSponsorIcon(){
         const formData = new FormData();
         formData.append("urlLink", urlLink)
         formData.append("icon", icon)
-        const submit = await axios.post('http://localhost:3001/upload-sponsor-icon' , formData, {
+        const submit = await axios.post('https://tournahub-hlr8.onrender.com/upload-sponsor-icon' , formData, {
             headers: {"Content-Type": "multipart/form-data"}
         })
         .then(result => {console.log(result)

@@ -15,7 +15,7 @@ function AddStatistics() {
     const handleSubmit = (e) => {
       e.preventDefault();
       axios
-        .post('http://localhost:3001/CreateStatistics', 
+        .post('https://tournahub-hlr8.onrender.com/CreateStatistics', 
         { tournamentId, Participant, Score, AverageScore, TotalScore })
         .then((result) => {
           console.log(result);
