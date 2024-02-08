@@ -1,5 +1,5 @@
 # CSIT-23-S4-12
-This is a backup just in case, someone breaks anything in the main repository, my google drive gets banned or my PC dies
+This is a live deployment of the Tournahub App dated 09/02/2024.
 
 # About TournaHub
 To develop an online platform to plan and run a league or a tournament of several different sports.
