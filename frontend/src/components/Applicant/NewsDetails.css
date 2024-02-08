@@ -1,0 +1,122 @@
+.singleCol {
+  max-width: 750px;
+  margin: 0 auto;
+  font-size: 2rem;
+  padding: 1rem;
+}
+.FBWording {
+  font-size: 1rem;
+  color: aliceblue;
+  background: rgb(77, 77, 182);
+  border-radius: 12px;
+  padding: 10px;
+  border: rgb(41, 41, 97);
+  transition-duration: 0.4s;
+}
+.FBWording:hover {
+  background-color: rgb(41, 41, 97);
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.commentTextBox {
+  width: 400px;
+  height: 230px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  font-size: 16px;
+}
+.commentTextBox:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+.usernameSize {
+  flex-direction: column;
+  display: flex;
+  border: 2px solid orange;
+  border-radius: 5px;
+  width: 300px;
+  padding: 15px;
+}
+
+.usernameSize h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 15px;
+}
+
+.usernameSize p {
+  letter-spacing: 1px;
+  font-size: 14px;
+  line-height: 25px;
+}
+.middle {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.igWordings {
+  font-size: 1rem;
+  color: aliceblue;
+  background: rgb(206, 59, 182);
+  border-radius: 12px;
+  padding: 10px;
+  border: rgb(138, 30, 120);
+  transition-duration: 0.4s;
+}
+
+.igWordings:hover {
+  background-color: rgb(138, 30, 120);
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.twitterWording {
+  font-size: 1rem;
+  color: aliceblue;
+  background: rgb(74, 197, 238);
+  border-radius: 12px;
+  padding: 10px;
+  border: rgb(15, 98, 126);
+  transition-duration: 0.4s;
+}
+.twitterWording:hover {
+  background-color: rgb(31, 98, 120);
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* Style for the news article container */
+.pre-container {
+  max-width: 800px; /* Adjust the width as needed */
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+/* Style for the news article text */
+pre {
+  font-size: 16px;
+  color: #333;
+  text-align: left; /* Align text to the left */
+}

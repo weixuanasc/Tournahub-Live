@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&family=Marhey:wght@500;600&family=Nunito+Sans:wght@300&family=Poppins&display=swap");
+
+.topnav {
+  font-family: var(--font-roboto);
+  background-color: #bababa;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* Style the links inside the navigation bar */
+.wordings {
+  font-family: var(--font-roboto);
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  height: 100%;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.wordings:hover {
+  background-color: #ce6816;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.wordings.active {
+  background-color: #ce6816;
+  color: white;
+}
+.mainBtns {
+  min-width: 80px;
+  height: 35px;
+  text-transform: capitalize;
+  color: gray;
+  font-family: var(--nunito);
+  font-size: 15px;
+  letter-spacing: 1.1px;
+  border-radius: 2px;
+  background: #ce6816;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.801);
+  transition: all 0.3s ease;
+  -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+  box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+}
+.mainBtns span {
+  color: #e7e7e7 !important;
+}
+.mainBtns:hover {
+  transform: scale(1.1);
+}
+.nav_right {
+  flex: 8.5;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+.toLeft {
+  margin-left: auto !important;
+}

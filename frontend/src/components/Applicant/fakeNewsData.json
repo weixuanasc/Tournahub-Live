@@ -1,0 +1,26 @@
+[
+  {
+    "newsId": "1",
+    "image": "/images/Soccer.jpg",
+    "title": "Soccer Match of the century",
+    "description": "Do not miss the latest soccer match between Alibaba and Cloud happening this coming Friday on 28th Dec"
+  },
+  {
+    "newsId": "2",
+    "image": "/images/BasketBall.jpg",
+    "title": "NBA Rumors: OG Anunoby trade eyed by Pistons amid search for forward, Losing streak",
+    "description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+  },
+  {
+    "newsId": "3",
+    "image": "/images/tennis.jpg",
+    "title": "Simona Halep opens up on fallout with coach Patrick Mouratoglou amid four-year doping ban",
+    "description": "In a video posted on Mouratoglou's Instagram in November, he took the blame for providing a tainted substance to Halep. Mouratoglou was the long-time coach of Serena Williams before working with Halep."
+  },
+  {
+    "newsId": "4",
+    "image": "/images/Match.jpg",
+    "title": "Special Report",
+    "description": "Vivamus volutpat, tortor in dapibus eleifend, libero augue facilisis sapien."
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "tournamentName": "Soccer Championship 2023",
+  "matches": [
+    {
+      "matchNumber": 1,
+      "team1": {
+        "name": "Team A",
+        "players": ["Player1A", "Player2A", "Player3A"],
+        "score": 2
+      },
+      "team2": {
+        "name": "Team B",
+        "players": ["Player1B", "Player2B", "Player3B"],
+        "score": 1
+      }
+    },
+    {
+      "matchNumber": 2,
+      "team1": {
+        "name": "Team C",
+        "players": ["Player1C", "Player2C", "Player3C"],
+        "score": 3
+      },
+      "team2": {
+        "name": "Team D",
+        "players": ["Player1D", "Player2D", "Player3D"],
+        "score": 0
+      }
+    },
+    {
+      "matchNumber": 3,
+      "team1": {
+        "name": "Team E",
+        "players": ["Player1E", "Player2E", "Player3E"],
+        "score": 1
+      },
+      "team2": {
+        "name": "Team F",
+        "players": ["Player1F", "Player2F", "Player3F"],
+        "score": 1
+      }
+    }
+  ]
+}
