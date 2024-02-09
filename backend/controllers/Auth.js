@@ -20,7 +20,7 @@ const handleLogin = (req, res) => {
               "jwt-secret-key",
               { expiresIn: "1d" }
             );
-            res.cookie("token", token, { domain: ".fyp23s424.com", sameSite: 'None', secure: true });
+            res.cookie("token", token, { domain: "www.fyp23s424.com", sameSite: 'None', secure: true });
             return res.json({
               Status: "Login is successful",
               usertype: user.usertype,
