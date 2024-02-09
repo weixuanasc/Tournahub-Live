@@ -41,6 +41,10 @@ const RatingAndReview = () => {
   };
 
   const addToReviews = async () => {
+    if (!userInput.trim()) {
+      window.alert("Please write your review before submitting.");
+      return;
+    }
     const body = {
       text: userInput,
       star: value,
