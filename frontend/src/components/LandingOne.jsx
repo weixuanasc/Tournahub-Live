@@ -9,13 +9,13 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 
 export default function LandingOne() {
-  const domainName = "https://api.fyp23s424.com" 
   const [userCount, setUserCount] = useState(null);
   const [tournamentCount, setTournamentCount] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [sponsorIcons, setSponsorIcons] = useState([]);
   const [images, setImages] = useState([]);
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     const fetchUserCount = async () => {
@@ -61,7 +61,7 @@ export default function LandingOne() {
   useEffect(() => {
     const fetchTournamentCount = async () => {
       try {
-        const response = await axios.get(`${domainName}/count-tournaments`);
+        const response = await axios.get(`https://api.fyp23s424.com/count-tournaments`);
         setTournamentCount(response.data);
       } catch (error) {
         console.log(error);
@@ -73,7 +73,7 @@ export default function LandingOne() {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(`${domainName}/api/reviews/fetch-reviews-homepage`);
+        const response = await axios.get(`https://api.fyp23s424.com/api/reviews/fetch-reviews-homepage`);
         setReviews(response.data);
       } catch (error) {
         console.error('Error fetching reviews:', error);
@@ -85,7 +85,7 @@ export default function LandingOne() {
   useEffect(() => {
     const fetchSponsorIcons = async () => {
       try {
-        const response = await axios.get(`${domainName}/fetch-sponsor-icons`);
+        const response = await axios.get(`https://api.fyp23s424.com/fetch-sponsor-icons`);
         setSponsorIcons(response.data);
         console.log(response.data);
       } catch (error) {
@@ -319,10 +319,10 @@ export default function LandingOne() {
           </div>
           <div className="footer-social">
             <h3>Social Media</h3>
-            <a href="https://www.TournahubOfficial.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.fyp23s424.com/" target="_blank" rel="noopener noreferrer">
               <FacebookIcon />
             </a>
-            <a href="https://www.TournahubOfficial.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.fyp23s424.com/" target="_blank" rel="noopener noreferrer">
               <InstagramIcon />
             </a>
           </div>
