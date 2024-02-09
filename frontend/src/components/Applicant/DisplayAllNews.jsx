@@ -38,7 +38,7 @@ const ApplicantHome = () => {
   };
   const handleTitleClick = (newsId) => {
     if (newsId) {
-      window.location.href = `/home/news/${newsId}`;
+      window.location.href = `https://tournahub-frontend.onrender.com/home/news/${newsId}`;
     }
   };
 
@@ -53,7 +53,7 @@ const ApplicantHome = () => {
                 <div className="newsBorder" key={news._id}>
                   <a
                     className="newstitle"
-                    href={`/home/news/${news._id}`}
+                    href={`https://tournahub-frontend.onrender.com/home/news/${news._id}`}
                     onClick={(e) => {
                       e.preventDefault();
                       handleTitleClick(news._id);
@@ -87,7 +87,7 @@ const ApplicantHome = () => {
                   <div className="newsBorder" key={news._id}>
                     <a
                       className="newstitle"
-                      href={`/home/news/${news._id}`}
+                      href={`https://tournahub-frontend.onrender.com/home/news/${news._id}`}
                       onClick={(e) => {
                         e.preventDefault();
                         handleTitleClick(news._id);
