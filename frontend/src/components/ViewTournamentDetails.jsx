@@ -5,7 +5,6 @@ import SelectNavbar from "./SelectNavbar";
 import jsPDF from "jspdf";
 
 function ViewTournamentDetails() {
-  const domainName = "https://tournahub-hlr8.onrender.com" ;
   const [tournamentDetails, setTournamentDetails] = useState({});
   const [matchDetails, setMatchDetails] = useState({});
   const [rankingTableDetails, setRankingTableDetails] = useState({});
@@ -147,7 +146,7 @@ function ViewTournamentDetails() {
           <>
             <img
               width={"150px"}
-              src={`${domainName}/tournamentsponsor/${tournamentDetails.tournamentSponsorIcon}`}
+              src={`https://api.fyp23s424.com/tournamentsponsor/${tournamentDetails.tournamentSponsorIcon}`}
               alt={tournamentDetails.tournamentSponsorIcon}
               // onError={(e) => {
               //   // Handle image load error & display error image

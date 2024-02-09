@@ -97,7 +97,7 @@ function ViewApplicants() {
   const updateApplicationStatus = async (applicationId, action) => {
     try {
       await axios.put(
-        `https://tournahub-hlr8.onrender.com/api/applicationstatus/updateApplicationStatus/${applicationId}`,
+        `https://api.fyp23s424.com/api/applicationstatus/updateApplicationStatus/${applicationId}`,
         { action }
       );
       fetchApplicationsOfTournaments();
