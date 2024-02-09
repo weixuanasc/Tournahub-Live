@@ -38,7 +38,7 @@ const ApplicantHome = () => {
   };
   const handleTitleClick = (newsId) => {
     if (newsId) {
-      window.location.href = `https://api.fyp23s424.com/home/news/${newsId}`;
+      window.location.href = `https://www.fyp23s424.com/home/news/${newsId}`;
     }
   };
 
@@ -53,7 +53,7 @@ const ApplicantHome = () => {
                 <div className="newsBorder" key={news._id}>
                   <a
                     className="newstitle"
-                    href={`https://api.fyp23s424.com/home/news/${news._id}`}
+                    href={`https://www.fyp23s424.com/home/news/${news._id}`}
                     onClick={(e) => {
                       e.preventDefault();
                       handleTitleClick(news._id);
@@ -87,7 +87,7 @@ const ApplicantHome = () => {
                   <div className="newsBorder" key={news._id}>
                     <a
                       className="newstitle"
-                      href={`https://api.fyp23s424.com/home/news/${news._id}`}
+                      href={`https://www.fyp23s424.com/home/news/${news._id}`}
                       onClick={(e) => {
                         e.preventDefault();
                         handleTitleClick(news._id);
