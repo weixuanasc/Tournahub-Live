@@ -20,7 +20,7 @@ export default function LandingOne() {
   useEffect(() => {
     const fetchUserCount = async () => {
       try {
-        const response = await axios.get(`${domainName}/count-user`);
+        const response = await axios.get(`https://api.fyp23s424.com/count-user`);
         setUserCount(response.data);
       } catch (error) {
         console.log(error);
@@ -282,7 +282,7 @@ export default function LandingOne() {
       <div key={index}>
       <img
           width={"150px"}
-          src={`${domainName}/sponsoricon/${sponsorIcon.icon}`}
+          src={`https://api.fyp23s424.com/sponsoricon/${sponsorIcon.icon}`}
           alt={sponsorIcons.icon}
           onClick={() => window.open(sponsorIcon.urlLink)}
           onError={(e) => {
