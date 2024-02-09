@@ -8,12 +8,17 @@ function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
+  
+  const hostUrl = window.location.host;
+  console.log("Host URL:", hostUrl);
+  const domainName = window.location.hostname;
+  console.log("Domain Name:", domainName);
 
   axios.defaults.withCredentials = true;
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://tournahub-hlr8.onrender.com/login", { email, password })
+      .post("https://api.fyp23s424.com/login", { email, password })
       .then((res) => {
         if (res.data.Status === "Login is successful") {
           if (res.data.usertype === "systemadministrator") {
