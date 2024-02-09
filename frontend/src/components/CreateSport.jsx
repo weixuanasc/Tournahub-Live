@@ -12,7 +12,7 @@ function CreateSport() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('https://tournahub-hlr8.onrender.com/CreateSport', {name})
+        axios.post('https://api.fyp23s424.com/CreateSport', {name})
         .then(result => {
           console.log(result)
           alert('Sport created successfully')

@@ -19,7 +19,7 @@ function AddMatches() {
     const handleSubmit = (e) => {
       e.preventDefault();
       axios
-        .post('https://tournahub-hlr8.onrender.com/CreateMatches', 
+        .post('https://api.fyp23s424.com/CreateMatches', 
         { tournamentId, MatchNumber, MatchName, MatchDate, MatchTime, Player1, Player2, Player1_Score, Player2_Score, Winner })
         .then((result) => {
           console.log(result);

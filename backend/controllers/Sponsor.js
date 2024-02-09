@@ -2,7 +2,7 @@ const SponsorIconModel = require("../models/SponsorIcon");
 
 // Replace with actual Stripe secret key
 const stripe = require('stripe')('sk_test_51OZDZ5GNBcwxwaFCOENvyhDKeoiDMDcSytJ0MefI3qZxnmNbgCr8vU3DWE5lglPbxXCvjNF0HHqSvAWREBDUkQBS00mDNi8TsS');
-const SESSION_URL = "https://tournahub-frontend.onrender.com"
+const SESSION_URL = "https://www.fyp23s424.com"
 
 
 const IconPayment = async (req, res) => {

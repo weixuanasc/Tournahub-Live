@@ -13,7 +13,7 @@ function UpdateMatches() {
   useEffect(() => {
     // Fetch match details when the component mounts
     axios
-      .get(`https://tournahub-hlr8.onrender.com/getMatches/${id}`)
+      .get(`https://api.fyp23s424.com/getMatches/${id}`)
       .then((response) => {
         setMatchDetails(response.data);
         // Initialize updatedMatches with the fetched data
@@ -40,7 +40,7 @@ function UpdateMatches() {
     console.log('Updated Match:', updatedMatch);
   
     axios
-      .put(`https://tournahub-hlr8.onrender.com/updateMatches/${matchId}`, updatedMatch)
+      .put(`https://api.fyp23s424.com/updateMatches/${matchId}`, updatedMatch)
       .then((result) => {
         console.log(result);
         alert('Match updated successfully');

@@ -12,7 +12,7 @@ function UpdateUsers() {
     const navigate = useNavigate()
 
     useEffect(() => {
-      axios.get('https://tournahub-hlr8.onrender.com/getUser/'+id)
+      axios.get('https://api.fyp23s424.com/getUser/'+id)
       .then(result => {console.log(result)
             setName(result.data.name)
             setEmail(result.data.email)
@@ -25,7 +25,7 @@ function UpdateUsers() {
   
     const Update = (e) => {
       e.preventDefault();
-      axios.put('https://tournahub-hlr8.onrender.com/updateUser/'+id, {name, email, password, usertype, isActive})
+      axios.put('https://api.fyp23s424.com/updateUser/'+id, {name, email, password, usertype, isActive})
         .then(result => {
           console.log(result)
           alert('User updated successfully')

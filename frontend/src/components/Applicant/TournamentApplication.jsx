@@ -28,7 +28,7 @@ const TournamentApplication = () => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          "https://tournahub-hlr8.onrender.com/getCurrentUser",
+          "https://api.fyp23s424.com/getCurrentUser",
           {
             withCredentials: true,
           }
@@ -44,7 +44,7 @@ const TournamentApplication = () => {
     const fetchOpenTournaments = async () => {
       try {
         const response = await axios.get(
-          "https://tournahub-hlr8.onrender.com/api/applicationstatus/getOpenTournaments"
+          "https://api.fyp23s424.com/api/applicationstatus/getOpenTournaments"
         );
         setOpenTournaments(response.data);
       } catch (error) {
@@ -60,7 +60,7 @@ const TournamentApplication = () => {
     const fetchAppliedTournaments = async () => {
       try {
         const response = await axios.get(
-          `https://tournahub-hlr8.onrender.com/api/applicationstatus/getUserApplications/${user?._id}`
+          `https://api.fyp23s424.com/api/applicationstatus/getUserApplications/${user?._id}`
         );
         setAppliedTournaments(response.data);
       } catch (error) {
@@ -77,7 +77,7 @@ const TournamentApplication = () => {
     if (!user) return;
     try {
       const response = await axios.post(
-        `https://tournahub-hlr8.onrender.com/api/applicationstatus/applyForTournament/${tournamentId}`,
+        `https://api.fyp23s424.com/api/applicationstatus/applyForTournament/${tournamentId}`,
         {
           userId: user?._id,
         }

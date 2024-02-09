@@ -12,7 +12,7 @@ function SponsorTournament(){
     useEffect(() => {
         const fetchTournaments = async () => {
           try {
-            const response = await axios.get("https://tournahub-hlr8.onrender.com/getSponsorableTournaments");
+            const response = await axios.get("https://api.fyp23s424.com/getSponsorableTournaments");
             setTournamentData(response.data);
             console.log(response.data);
           } catch (error) {
@@ -30,7 +30,7 @@ function SponsorTournament(){
         formData.append("id", Id)
         formData.append("tournamentSponsor", tournamentSponsor)
         formData.append("icon", icon)
-        const submit = await axios.post('https://tournahub-hlr8.onrender.com/sponsorTournament' , formData, {
+        const submit = await axios.post('https://api.fyp23s424.com/sponsorTournament' , formData, {
             headers: {"Content-Type": "multipart/form-data"}
         })
         .then(result => {console.log(result)

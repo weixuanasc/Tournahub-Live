@@ -15,7 +15,7 @@ const ApplicantHome = () => {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get("https://tournahub-hlr8.onrender.com/getCurrentUser", {
+      const { data } = await axios.get("https://api.fyp23s424.com/getCurrentUser", {
         withCredentials: true,
       });
       setUser(data);
@@ -29,7 +29,7 @@ const ApplicantHome = () => {
   const fetchAllNews = async () => {
     try {
       const { status, data } = await axios.get(
-        "https://tournahub-hlr8.onrender.com/api/news/all"
+        "https://api.fyp23s424.com/api/news/all"
       );
       setNewsData(data.message);
     } catch (error) {
@@ -62,7 +62,7 @@ const ApplicantHome = () => {
                     <p>{news.user?.name}</p>
                     <img
                       className="fixed-size-image"
-                      src={`https://tournahub-hlr8.onrender.com/images/${news.photo}`}
+                      src={`https://api.fyp23s424.com/images/${news.photo}`}
                       alt={news.title}
                       onClick={() => handleTitleClick(news._id)}
                     />
@@ -88,7 +88,7 @@ const ApplicantHome = () => {
                     <p>{news.user?.name}</p>
                     <img
                       className="fixed-size-image"
-                      src={`https://tournahub-hlr8.onrender.com/images/${news.photo}`}
+                      src={`https://api.fyp23s424.com/images/${news.photo}`}
                       alt={news.title}
                       onClick={() => handleTitleClick(news._id)}
                     />

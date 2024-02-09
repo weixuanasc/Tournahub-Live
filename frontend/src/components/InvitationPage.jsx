@@ -19,7 +19,7 @@ function InvitationPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("https://tournahub-hlr8.onrender.com/getCurrentUser");
+                const response = await axios.get("https://api.fyp23s424.com/getCurrentUser");
                 setUser(response.data);
             } catch (error) {
                 console.log(error);
@@ -34,7 +34,7 @@ function InvitationPage() {
 
     useEffect(() => {
         // Fetch user details when the component mounts
-        axios.get(`https://tournahub-hlr8.onrender.com/getAllUser`)
+        axios.get(`https://api.fyp23s424.com/getAllUser`)
           .then((response) => {
             setUserDetails(response.data);
           })
@@ -45,7 +45,7 @@ function InvitationPage() {
 
     useEffect(() => {
         axios
-        .get(`https://tournahub-hlr8.onrender.com/getTournamentDetails/${tournamentId}`)
+        .get(`https://api.fyp23s424.com/getTournamentDetails/${tournamentId}`)
         .then((response) => {
           setTournamentDetails(response.data);
           console.log(response.data);
@@ -60,7 +60,7 @@ function InvitationPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('https://tournahub-hlr8.onrender.com/CreateStatus', {
+        axios.post('https://api.fyp23s424.com/CreateStatus', {
             tournamentId,
             userId: selectedUserId,
             collaboratorStatus: 'Pending',

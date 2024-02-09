@@ -84,7 +84,7 @@ const PORT = 3001;
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://tournahub-frontend.onrender.com"],
+    origin: ["http://localhost:5173", "https://tournahub-frontend.onrender.com" , "https://www.fyp23s424.com"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })

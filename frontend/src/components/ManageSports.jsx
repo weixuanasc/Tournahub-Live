@@ -14,7 +14,7 @@ function ManageSports() {
   useEffect(() => {
     const fetchSports = async () => {
       try {
-        const response = await axios.get('https://tournahub-hlr8.onrender.com/ManageSports');
+        const response = await axios.get('https://api.fyp23s424.com/ManageSports');
         setSports(response.data);
       } catch (error) {
         console.log(error);
@@ -33,7 +33,7 @@ function ManageSports() {
     } else {
       // Otherwise, filter sports based on the search term
       try {
-        const response = await axios.get(`https://tournahub-hlr8.onrender.com/searchSports/${searchTerm}`);
+        const response = await axios.get(`https://api.fyp23s424.com/searchSports/${searchTerm}`);
         setFilteredSports(response.data);
       } catch (error) {
         console.log(error);
@@ -44,7 +44,7 @@ function ManageSports() {
   const handleDelete = async (id) => {
     if (window.confirm('Confirm deletion?')) {
       try {
-        await axios.delete(`https://tournahub-hlr8.onrender.com/deleteSport/${id}`);
+        await axios.delete(`https://api.fyp23s424.com/deleteSport/${id}`);
         window.location.reload()
       } catch (error) {
         console.log(error);

@@ -18,7 +18,7 @@ function ViewTournamentDetails() {
 
   useEffect(() => {
     // Fetch tournament details when the component mounts
-    axios.get(`https://tournahub-hlr8.onrender.com/getTournamentDetails/${id}`)
+    axios.get(`https://api.fyp23s424.com/getTournamentDetails/${id}`)
       .then((response) => {
         setTournamentDetails(response.data);
       })
@@ -33,7 +33,7 @@ function ViewTournamentDetails() {
 
   useEffect(() => {
     // Fetch match details when the component mounts
-    axios.get(`https://tournahub-hlr8.onrender.com/getMatches/${id}`)
+    axios.get(`https://api.fyp23s424.com/getMatches/${id}`)
       .then((response) => {
         setMatchDetails(response.data);
       })
@@ -47,7 +47,7 @@ function ViewTournamentDetails() {
 
   useEffect(() => {
     // Fetch ranking table details when the component mounts
-    axios.get(`https://tournahub-hlr8.onrender.com/getRankingTable/${id}`)
+    axios.get(`https://api.fyp23s424.com/getRankingTable/${id}`)
       .then((response) => {
         setRankingTableDetails(response.data);
       })
@@ -61,7 +61,7 @@ function ViewTournamentDetails() {
 
   useEffect(() => {
     // Fetch statistics table details when the component mounts
-    axios.get(`https://tournahub-hlr8.onrender.com/getStatistics/${id}`)
+    axios.get(`https://api.fyp23s424.com/getStatistics/${id}`)
       .then((response) => {
         setStatisticsDetails(response.data);
       })
@@ -79,7 +79,7 @@ function ViewTournamentDetails() {
   };
 
   const exportScoresheet = () =>{
-    window.open(`https://tournahub-hlr8.onrender.com/scoresheet/${tournamentDetails.tournamentSport}.pdf`, "_blank", "noreferrer")
+    window.open(`https://api.fyp23s424.com/scoresheet/${tournamentDetails.tournamentSport}.pdf`, "_blank", "noreferrer")
   }
 
   const exportMatches = () => {

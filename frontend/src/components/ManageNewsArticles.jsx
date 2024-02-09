@@ -12,7 +12,7 @@ function ManageNewsArticles() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get('https://tournahub-hlr8.onrender.com/api/news/all');
+        const response = await axios.get('https://api.fyp23s424.com/api/news/all');
         setNews(response.data.message);
       } catch (error) {
         console.log(error);
@@ -31,7 +31,7 @@ function ManageNewsArticles() {
     } else {
       // Otherwise, filter news based on the search term
       try {
-        const response = await axios.get(`https://tournahub-hlr8.onrender.com/api/news/search/${searchTerm}`);
+        const response = await axios.get(`https://api.fyp23s424.com/api/news/search/${searchTerm}`);
         setFilteredNews(response.data.message);
       } catch (error) {
         console.log(error);
@@ -42,7 +42,7 @@ function ManageNewsArticles() {
   const handleDelete = async (id) => {
     if (window.confirm('Confirm deletion?')) {
       try {
-        await axios.delete(`https://tournahub-hlr8.onrender.com/api/news/${id}`);
+        await axios.delete(`https://api.fyp23s424.com/api/news/${id}`);
         window.location.reload()
       } catch (error) {
         console.log(error);

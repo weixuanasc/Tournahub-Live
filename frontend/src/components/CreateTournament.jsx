@@ -31,7 +31,7 @@ function CreateTournament() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://tournahub-hlr8.onrender.com/getCurrentUser"
+          "https://api.fyp23s424.com/getCurrentUser"
         );
         setUser(response.data);
       } catch (error) {
@@ -53,7 +53,7 @@ function CreateTournament() {
   useEffect(() => {
     // Fetch the list of sports from the database
     axios
-      .get('https://tournahub-hlr8.onrender.com/getSports')
+      .get('https://api.fyp23s424.com/getSports')
       .then((response) => {
         setSportsList(response.data);
       })
@@ -95,7 +95,7 @@ function CreateTournament() {
     e.preventDefault();
     const finalTournamentFormat = tournamentFormat === 'Others' ? customFormat : tournamentFormat;
     axios
-      .post('https://tournahub-hlr8.onrender.com/CreateTournament', 
+      .post('https://api.fyp23s424.com/CreateTournament', 
       { organizerId, 
         tournamentName, tournamentSport, tournamentSkillLevel,
         tournamentFormat : finalTournamentFormat,

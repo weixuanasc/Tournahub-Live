@@ -15,7 +15,7 @@ function AddStatistics() {
     const handleSubmit = (e) => {
       e.preventDefault();
       axios
-        .post('https://tournahub-hlr8.onrender.com/CreateStatistics', 
+        .post('https://api.fyp23s424.com/CreateStatistics', 
         { tournamentId, Participant, Score, AverageScore, TotalScore })
         .then((result) => {
           console.log(result);

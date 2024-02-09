@@ -8,7 +8,7 @@ function UpdateSports() {
     const navigate = useNavigate()
 
     useEffect(() => {
-      axios.get('https://tournahub-hlr8.onrender.com/getSport/'+id)
+      axios.get('https://api.fyp23s424.com/getSport/'+id)
       .then(result => {console.log(result)
             setName(result.data.name)
             setFormat(result.data.format)
@@ -18,7 +18,7 @@ function UpdateSports() {
   
     const Update = (e) => {
       e.preventDefault();
-      axios.put('https://tournahub-hlr8.onrender.com/updateSport/'+id, {name})
+      axios.put('https://api.fyp23s424.com/updateSport/'+id, {name})
         .then(result => {
           console.log(result)
           alert('Sport updated successfully')

@@ -13,7 +13,7 @@ function DashboardSA() {
 
   useEffect(() => {
     axios
-      .get("https://tournahub-hlr8.onrender.com/DashboardSA")
+      .get("https://api.fyp23s424.com/DashboardSA")
       .then((res) => {
         if (res.data === "Login is successful") {
           // Set and store verify in localStorage
@@ -42,7 +42,7 @@ function DashboardSA() {
         } else {
           // If not, fetch user data from the server
           const response = await axios.get(
-            "https://tournahub-hlr8.onrender.com/getCurrentUser"
+            "https://api.fyp23s424.com/getCurrentUser"
           );
           setUser(response.data);
           // Store user data in localStorage
@@ -56,7 +56,7 @@ function DashboardSA() {
         } else {
           // If not, fetch user data from the server
           const verifyResponse = await axios.get(
-            "https://tournahub-hlr8.onrender.com/DashboardSA"
+            "https://api.fyp23s424.com/DashboardSA"
           );
           setVerify("Welcome! You are logged in as a System Administrator");
           // Store verify in localStorage

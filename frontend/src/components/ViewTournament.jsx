@@ -26,7 +26,7 @@ function ViewTournament() {
       
       useEffect(() => {
         // Fetch tournaments when the component mounts
-        axios.get('https://tournahub-hlr8.onrender.com/getTournamentsNonTO')
+        axios.get('https://api.fyp23s424.com/getTournamentsNonTO')
           .then((response) => {
             setTournaments(response.data);
           })
@@ -54,7 +54,7 @@ function ViewTournament() {
           setFilteredTournaments([]);
         } else {
           try {
-            const response = await axios.get(`https://tournahub-hlr8.onrender.com/searchTournamentsNonTO/${searchTerm}/`);
+            const response = await axios.get(`https://api.fyp23s424.com/searchTournamentsNonTO/${searchTerm}/`);
             console.log(response.data);
             setFilteredTournaments(response.data)
           } catch (error) {

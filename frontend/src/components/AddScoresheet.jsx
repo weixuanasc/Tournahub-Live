@@ -12,7 +12,7 @@ function AddScoresheet() {
         e.preventDefault();
         const formData = new FormData();
         formData.append("scoresheet", scoresheet)
-        const submit = await axios.post('https://tournahub-hlr8.onrender.com/AddScoresheet' , formData, {
+        const submit = await axios.post('https://api.fyp23s424.com/AddScoresheet' , formData, {
             headers: {"Content-Type": "multipart/form-data"}
         })
         .then(result => {console.log(result)

@@ -20,9 +20,7 @@ const handleLogin = (req, res) => {
               "jwt-secret-key",
               { expiresIn: "1d" }
             );
-            res.cookie("token", token, {
-              sameSite: 'none' ,
-            });
+            res.cookie("token", token);
             return res.json({
               Status: "Login is successful",
               usertype: user.usertype,
@@ -122,7 +120,7 @@ const forgetPassword = (req,res) => {
       from: 'tournahub004@gmail.com',
       to: user.email,
       subject: 'Reset Password - Tournahub',
-      text: `https://tournahub-hlr8.onrender.com/ResetPassword/${user._id}/${fPWToken}`
+      text: `https://www.fyp23s424.com/ResetPassword/${user._id}/${fPWToken}`
     };
     
     transporter.sendMail(mailOptions, function(error, info){

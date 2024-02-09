@@ -9,7 +9,7 @@ function ForgetPassword(){
     axios.defaults.withCredentials = true;
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const submit = await axios.post('https://tournahub-hlr8.onrender.com/forgetPassword' , {email})
+        const submit = await axios.post('https://api.fyp23s424.com/forgetPassword' , {email})
         .then(res => {
             if(res.data.Status === "Success") {
                 alert("Reset Password Email Sent!")

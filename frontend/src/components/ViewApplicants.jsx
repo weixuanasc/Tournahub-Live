@@ -75,7 +75,7 @@ function ViewApplicants() {
     if (!tournamentId) return;
     try {
       const { data } = await axios.get(
-        `https://tournahub-hlr8.onrender.com/api/applicationstatus/getApplicationOfTournament/${tournamentId}`
+        `https://api.fyp23s424.com/api/applicationstatus/getApplicationOfTournament/${tournamentId}`
       );
       setApplicants(data.message);
     } catch (error) {
@@ -86,7 +86,7 @@ function ViewApplicants() {
   const fetchTournamentData = async () => {
     try {
       const { data } = await axios.get(
-        `https://tournahub-hlr8.onrender.com/getTournamentDetails/${tournamentId}`
+        `https://api.fyp23s424.com/getTournamentDetails/${tournamentId}`
       );
       setTournament(data);
     } catch (error) {

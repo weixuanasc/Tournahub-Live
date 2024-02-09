@@ -48,7 +48,7 @@ const NewsForm = () => {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get("https://tournahub-hlr8.onrender.com/getCurrentUser", {
+      const { data } = await axios.get("https://api.fyp23s424.com/getCurrentUser", {
         withCredentials: true,
       });
       setUser(data);
@@ -61,7 +61,7 @@ const NewsForm = () => {
   useEffect(() => {
     const fetchSports = async () => {
       try {
-        const response = await axios.get("https://tournahub-hlr8.onrender.com/ManageSports");
+        const response = await axios.get("https://api.fyp23s424.com/ManageSports");
         setSports(response.data);
       } catch (error) {
         console.log(error);
@@ -92,7 +92,7 @@ const NewsForm = () => {
       }
 
       const response = await axios.post(
-        "https://tournahub-hlr8.onrender.com/api/news/create",
+        "https://api.fyp23s424.com/api/news/create",
         formData,
         {
           headers: {
@@ -129,7 +129,7 @@ const NewsForm = () => {
   const fetchAllNews = async () => {
     try {
       const { data, status } = await axios.get(
-        "https://tournahub-hlr8.onrender.com/api/news/all"
+        "https://api.fyp23s424.com/api/news/all"
       );
       setAllNews(data.message);
     } catch (error) {
@@ -155,7 +155,7 @@ const NewsForm = () => {
       console.log("Deleting news with ID:", newsId);
 
       const { status } = await axios.delete(
-        `https://tournahub-hlr8.onrender.com/api/news/${newsId}`
+        `https://api.fyp23s424.com/api/news/${newsId}`
       );
 
       console.log("Delete status:", status);
@@ -259,7 +259,7 @@ const NewsForm = () => {
       formData.append("photo", editArticleData.photo);
 
       const response = await axios.put(
-        `https://tournahub-hlr8.onrender.com/api/news/edit/${newsId}`,
+        `https://api.fyp23s424.com/api/news/edit/${newsId}`,
         formData,
         {
           headers: {

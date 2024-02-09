@@ -15,7 +15,7 @@ const ApplicantHome = () => {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get("https://tournahub-hlr8.onrender.com/getCurrentUser", {
+      const { data } = await axios.get("https://api.fyp23s424.com/getCurrentUser", {
         withCredentials: true,
       });
       setUser(data);
@@ -29,7 +29,7 @@ const ApplicantHome = () => {
   const fetchAllNews = async () => {
     try {
       const { status, data } = await axios.get(
-        "https://tournahub-hlr8.onrender.com/api/news/all"
+        "https://api.fyp23s424.com/api/news/all"
       );
       setNewsData(data.message);
     } catch (error) {
@@ -38,7 +38,7 @@ const ApplicantHome = () => {
   };
   const handleTitleClick = (newsId) => {
     if (newsId) {
-      window.location.href = `https://tournahub-frontend.onrender.com/home/news/${newsId}`;
+      window.location.href = `https://api.fyp23s424.com/home/news/${newsId}`;
     }
   };
 
@@ -53,7 +53,7 @@ const ApplicantHome = () => {
                 <div className="newsBorder" key={news._id}>
                   <a
                     className="newstitle"
-                    href={`https://tournahub-frontend.onrender.com/home/news/${news._id}`}
+                    href={`https://api.fyp23s424.com/home/news/${news._id}`}
                     onClick={(e) => {
                       e.preventDefault();
                       handleTitleClick(news._id);
@@ -62,7 +62,7 @@ const ApplicantHome = () => {
                     <div className="newsColumns">
                       <img
                         className="fixed-size-image"
-                        src={`https://tournahub-hlr8.onrender.com/images/${news.photo}`}
+                        src={`https://api.fyp23s424.com/images/${news.photo}`}
                         alt={news.title}
                         onClick={() => handleTitleClick(news._id)}
                       />
@@ -87,7 +87,7 @@ const ApplicantHome = () => {
                   <div className="newsBorder" key={news._id}>
                     <a
                       className="newstitle"
-                      href={`https://tournahub-frontend.onrender.com/home/news/${news._id}`}
+                      href={`https://api.fyp23s424.com/home/news/${news._id}`}
                       onClick={(e) => {
                         e.preventDefault();
                         handleTitleClick(news._id);
@@ -97,7 +97,7 @@ const ApplicantHome = () => {
                       <div className="newsColumns">
                         <img
                           className="fixed-size-image"
-                          src={`https://tournahub-hlr8.onrender.com/images/${news.photo}`}
+                          src={`https://api.fyp23s424.com/images/${news.photo}`}
                           alt={news.title}
                           onClick={() => handleTitleClick(news._id)}
                         />

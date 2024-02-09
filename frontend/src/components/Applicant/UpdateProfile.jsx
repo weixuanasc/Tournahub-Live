@@ -19,7 +19,7 @@ const UpdateProfile = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://tournahub-hlr8.onrender.com/getCurrentUser" ,
+          "https://api.fyp23s424.com/getCurrentUser" ,
         );
         setUser(response.data);
       } catch (error) {
@@ -35,7 +35,7 @@ const UpdateProfile = () => {
   useEffect(() => {
     // Fetch the list of sports from the database
     axios
-      .get('https://tournahub-hlr8.onrender.com/getSports')
+      .get('https://api.fyp23s424.com/getSports')
       .then((response) => {
         setSportsList(response.data);
       })
@@ -45,7 +45,7 @@ const UpdateProfile = () => {
   const Update = (e) => {
     e.preventDefault();
     axios
-      .put("https://tournahub-hlr8.onrender.com/updateProfile/", {
+      .put("https://api.fyp23s424.com/updateProfile/", {
         name,
         email,
         interestedSport,

@@ -13,7 +13,7 @@ function DashboardS() {
 
   useEffect(() => {
     axios
-      .get("https://tournahub-hlr8.onrender.com/DashboardS")
+      .get("https://api.fyp23s424.com/DashboardS")
       .then((res) => {
         if (res.data === "Login is successful") {
           // Set and store verify in localStorage
@@ -42,7 +42,7 @@ function DashboardS() {
         } else {
           // If not, fetch user data from the server
           const response = await axios.get(
-            "https://tournahub-hlr8.onrender.com/getCurrentUser"
+            "https://api.fyp23s424.com/getCurrentUser"
           );
           setUser(response.data);
           // Store user data in localStorage

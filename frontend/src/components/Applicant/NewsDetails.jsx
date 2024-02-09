@@ -43,7 +43,7 @@ const NewsDetails = ({ match }) => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          "https://tournahub-hlr8.onrender.com/getCurrentUser",
+          "https://api.fyp23s424.com/getCurrentUser",
           {
             withCredentials: true,
           }
@@ -60,8 +60,8 @@ const NewsDetails = ({ match }) => {
     const getNewsDetailsAndComments = async () => {
       try {
         const [newsResponse, commentsResponse] = await Promise.all([
-          axios.get(`https://tournahub-hlr8.onrender.com/api/news/byid/${newsId}`),
-          axios.get(`https://tournahub-hlr8.onrender.com/api/news/${newsId}`, {
+          axios.get(`https://api.fyp23s424.com/api/news/byid/${newsId}`),
+          axios.get(`https://api.fyp23s424.com/api/news/${newsId}`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
@@ -86,7 +86,7 @@ const NewsDetails = ({ match }) => {
   const getNewsDetailsById = async () => {
     try {
       const { status, data } = await axios.get(
-        `https://tournahub-hlr8.onrender.com/api/news/byid/${newsId}`
+        `https://api.fyp23s424.com/api/news/byid/${newsId}`
       );
       console.log(data);
       setNews(data.message);
@@ -98,7 +98,7 @@ const NewsDetails = ({ match }) => {
   const getComments = async () => {
     try {
       const { data } = await axios.get(
-        `https://tournahub-hlr8.onrender.com/api/news/${newsId}`,
+        `https://api.fyp23s424.com/api/news/${newsId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -122,7 +122,7 @@ const NewsDetails = ({ match }) => {
 
     try {
       const { status, data } = await axios.post(
-        `https://tournahub-hlr8.onrender.com/api/news/create/${newsId}`,
+        `https://api.fyp23s424.com/api/news/create/${newsId}`,
         body,
         {
           headers: {
@@ -154,7 +154,7 @@ const NewsDetails = ({ match }) => {
     console.log("paload", payload);
     try {
       const { data } = await axios.post(
-        `https://tournahub-hlr8.onrender.com/api/news/create/${newsId}`,
+        `https://api.fyp23s424.com/api/news/create/${newsId}`,
         payload
       );
       // Update the comments state with the new comment
@@ -168,7 +168,7 @@ const NewsDetails = ({ match }) => {
   const fetchAllComments = async () => {
     try {
       const { data, status } = await axios.get(
-        `https://tournahub-hlr8.onrender.com/api/news/${newsId}`,
+        `https://api.fyp23s424.com/api/news/${newsId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -185,7 +185,7 @@ const NewsDetails = ({ match }) => {
 
   const handleCommentDelete = async (commentId) => {
     try {
-      await axios.delete(`https://tournahub-hlr8.onrender.com/api/news/comment/${commentId}`);
+      await axios.delete(`https://api.fyp23s424.com/api/news/comment/${commentId}`);
       setAllComments(
         allComments.filter((comment) => comment._id !== commentId)
       );
@@ -204,7 +204,7 @@ const NewsDetails = ({ match }) => {
 
           <img
             width={"200px"}
-            src={`https://tournahub-hlr8.onrender.com/images/${news.photo}`}
+            src={`https://api.fyp23s424.com/images/${news.photo}`}
             alt={news.title}
             onError={(e) => {
               // Handle image load error

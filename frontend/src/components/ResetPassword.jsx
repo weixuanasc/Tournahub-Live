@@ -18,7 +18,7 @@ function ResetPassword() {
         }
 
         try {
-            const response = await axios.post(`https://tournahub-hlr8.onrender.com/resetPassword/${id}/${token}`, { password });
+            const response = await axios.post(`https://api.fyp23s424.com/resetPassword/${id}/${token}`, { password });
 
             if (response.data.Status === "Success") {
                 alert("Password has been reset!");
