@@ -140,6 +140,10 @@ const NewsDetails = ({ match }) => {
   };
 
   const handleCommentSubmit = async (commentText) => {
+    if (!commentText.trim()) {
+      window.alert("Please write a comment before submitting.");
+      return;
+    }
     if (!user) {
       alert("user is null");
       return;
@@ -160,6 +164,7 @@ const NewsDetails = ({ match }) => {
       // Update the comments state with the new comment
       setAllComments([...allComments, data.comment]);
       setUserInput("");
+      fetchAllComments();
     } catch (error) {
       console.log(error);
     }
