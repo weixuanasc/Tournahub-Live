@@ -20,7 +20,9 @@ const handleLogin = (req, res) => {
               "jwt-secret-key",
               { expiresIn: "1d" }
             );
-            res.cookie("token", token);
+            res.cookie("token", token, {
+              sameSite: 'none' ,
+            });
             return res.json({
               Status: "Login is successful",
               usertype: user.usertype,
