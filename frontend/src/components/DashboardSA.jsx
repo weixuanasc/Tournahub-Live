@@ -87,7 +87,7 @@ function DashboardSA() {
       {user && (
         <div>
           <p>User ID: {user._id}</p>
-          <p>Eail: {user.emmail}</p>
+          <p>Email: {user.email}</p>
         </div>
       )}
       <DisplayAllNews />
