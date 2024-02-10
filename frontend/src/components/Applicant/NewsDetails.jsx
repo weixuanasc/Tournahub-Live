@@ -217,7 +217,7 @@ const NewsDetails = ({ match }) => {
             }}
           />
           <p>{news.author}</p>
-          <p>{news.postDate}</p>
+          <p>{new Date(news.postDate).toLocaleDateString('en-GB', {year: 'numeric', month: 'long', day: 'numeric'})}</p>
           <pre class="pre-container">{news.content}</pre>
           <div align="center">
             <ShareSocial

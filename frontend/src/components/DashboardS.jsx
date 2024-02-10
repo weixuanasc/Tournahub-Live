@@ -69,8 +69,6 @@ function DashboardS() {
       <p>{verify}</p>
       {user && (
         <div>
-          <p>User ID: {user._id}</p>
-          <p>Email: {user.email}</p>
         </div>
       )}
       <DisplayAllNews />
