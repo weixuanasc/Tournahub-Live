@@ -69,6 +69,7 @@ function DashboardS() {
       <p>{verify}</p>
       {user && (
         <div>
+          <p>Welcome Back {user.name}!</p>
         </div>
       )}
       <DisplayAllNews />
