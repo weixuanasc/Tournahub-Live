@@ -12,7 +12,7 @@ function CreateRankingTable() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:3001/CreateRankingTable', { tournamentId, Winner, RunnerUp })
+      .post('https://api.fyp23s424.com/CreateRankingTable', { tournamentId, Winner, RunnerUp })
       .then((result) => {
         console.log(result);
         alert('Ranking Table created successfully');

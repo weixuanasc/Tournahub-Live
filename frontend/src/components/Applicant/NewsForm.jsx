@@ -140,7 +140,7 @@ const NewsForm = () => {
   // const handleDeleteNews = async (newsId) => {
   //   try {
   //     const { status } = await axios.delete(
-  //       `http://localhost:3001/api/news/${newsId}`
+  //       `https://api.fyp23s424.com/api/news/${newsId}`
   //     );
   //     if (status === 200) {
   //       fetchAllNews();
@@ -198,7 +198,7 @@ const NewsForm = () => {
   //     formData.append("photo", editArticleData.photo);
 
   //     const response = await axios.put(
-  //       `http://localhost:3001/api/news/edit/${newsId}`,
+  //       `https://api.fyp23s424.com/api/news/edit/${newsId}`,
   //       formData,
   //       {
   //         headers: {

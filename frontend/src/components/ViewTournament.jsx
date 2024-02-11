@@ -28,7 +28,7 @@ function ViewTournament() {
   
   useEffect(() => {
     // Fetch tournaments when the component mounts
-    axios.get('http://localhost:3001/getTournamentsNonTO')
+    axios.get('https://api.fyp23s424.com/getTournamentsNonTO')
     .then((response) => {
       setTournaments(response.data);
     })
@@ -59,7 +59,7 @@ function ViewTournament() {
       setFilteredTournaments([]);
     } else {
       try {
-        const response = await axios.get(`http://localhost:3001/searchTournamentsNonTO/${searchTerm}/`);
+        const response = await axios.get(`https://api.fyp23s424.com/searchTournamentsNonTO/${searchTerm}/`);
         console.log(response.data);
         setFilteredTournaments(response.data)
       } catch (error) {
@@ -71,7 +71,7 @@ function ViewTournament() {
   useEffect(() => {
     // Fetch the list of sports from the database
     axios
-    .get('http://localhost:3001/getSports')
+    .get('https://api.fyp23s424.com/getSports')
     .then((response) => {
       setSportsList(response.data);
     })

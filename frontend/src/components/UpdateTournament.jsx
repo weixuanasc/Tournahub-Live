@@ -40,7 +40,7 @@ function UpdateTournament() {
   
   useEffect(() => {
     axios
-    .get(`http://localhost:3001/getTournamentDetails/${id}`)
+    .get(`https://api.fyp23s424.com/getTournamentDetails/${id}`)
     .then((response) => {
       setTournamentDetails(response.data);
       setUpdatedTournaments([response.data]);
@@ -77,7 +77,7 @@ function UpdateTournament() {
         updatedTournament.tournamentNumberofplayers || ''
         );
         axios
-        .put(`http://localhost:3001/updateTournament/${tournamentId}`, updatedTournament)
+        .put(`https://api.fyp23s424.com/updateTournament/${tournamentId}`, updatedTournament)
         .then((result) => {
           console.log(result);
           alert('Tournament updated successfully');
@@ -143,7 +143,7 @@ function UpdateTournament() {
           useEffect(() => {
             // Fetch the list of sports from the database
             axios
-            .get('http://localhost:3001/getSports')
+            .get('https://api.fyp23s424.com/getSports')
             .then((response) => {
               setSportsList(response.data);
             })

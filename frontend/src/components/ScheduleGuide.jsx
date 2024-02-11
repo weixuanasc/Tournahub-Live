@@ -12,7 +12,7 @@ function ScheduleGuide({ }) {
 
   useEffect(() => {
     setLoadingTournament(true);
-    axios.get(`http://localhost:3001/getTournamentDetails/${id}`)
+    axios.get(`https://api.fyp23s424.com/getTournamentDetails/${id}`)
       .then((response) => {
         setTournamentDetails(response.data);
         console.log(response.data);

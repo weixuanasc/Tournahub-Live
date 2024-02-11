@@ -16,7 +16,7 @@ function DashboardTOPendingCollaboration() {
   
   useEffect(() => {
         // Fetch tournaments when the component mounts
-        axios.get('http://localhost:3001/getTournaments')
+        axios.get('https://api.fyp23s424.com/getTournaments')
           .then((response) => {
             setTournaments(response.data);
           })
@@ -30,7 +30,7 @@ function DashboardTOPendingCollaboration() {
       
       useEffect(() => {
         // Fetch tournaments when the component mounts
-        axios.get('http://localhost:3001/getStatus')
+        axios.get('https://api.fyp23s424.com/getStatus')
           .then((response) => {
             setStatus(response.data);
           })
@@ -46,7 +46,7 @@ function DashboardTOPendingCollaboration() {
         const fetchData = async () => {
           try {
             const response = await axios.get(
-              "http://localhost:3001/getCurrentUser"
+              "https://api.fyp23s424.com/getCurrentUser"
             );
             setUser(response.data);
           } catch (error) {
@@ -72,7 +72,7 @@ function DashboardTOPendingCollaboration() {
         // Update status
         try {
           await axios.put(
-            `http://localhost:3001/updateStatus/${statusIdToUpdate}`,
+            `https://api.fyp23s424.com/updateStatus/${statusIdToUpdate}`,
             updatedStatus
           );
           console.log('Status updated successfully');
@@ -89,7 +89,7 @@ function DashboardTOPendingCollaboration() {
           // Update the tournaments database
           try {
             await axios.put(
-              `http://localhost:3001/updateTournamentCollaboratorId/${tournamentIdToUpdate}`,
+              `https://api.fyp23s424.com/updateTournamentCollaboratorId/${tournamentIdToUpdate}`,
               { collaboratorId: updatedStatus.collaboratorId }
             );
             console.log('Tournament updated successfully');
@@ -141,7 +141,7 @@ function DashboardTOPendingCollaboration() {
 //   )._id;
 
 //   axios
-//     .put(`http://localhost:3001/updateStatus/${statusIdToUpdate}`, updatedStatus)
+//     .put(`https://api.fyp23s424.com/updateStatus/${statusIdToUpdate}`, updatedStatus)
 //     .then((result) => {
 //       console.log(result);
 //       alert('Status updated successfully');

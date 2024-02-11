@@ -21,7 +21,7 @@ function ViewTournamentDetails() {
   
   useEffect(() => {
     // Fetch user details when the component mounts
-    axios.get(`http://localhost:3001/getAllUser`)
+    axios.get(`https://api.fyp23s424.com/getAllUser`)
     .then((response) => {
       setUserDetails(response.data);
     })
@@ -36,7 +36,7 @@ function ViewTournamentDetails() {
   
   useEffect(() => {
     // Fetch tournament details when the component mounts
-    axios.get(`http://localhost:3001/getTournamentDetails/${id}`)
+    axios.get(`https://api.fyp23s424.com/getTournamentDetails/${id}`)
     .then((response) => {
       setTournamentDetails(response.data);
     })
@@ -49,7 +49,7 @@ function ViewTournamentDetails() {
   }, 
   [id]);
   
-  axios.get(`http://localhost:3001/getMatches/${id}`)
+  axios.get(`https://api.fyp23s424.com/getMatches/${id}`)
   .then((response) => {
     const matches = response.data;
     setMatchDetails(matches);
@@ -71,7 +71,7 @@ function ViewTournamentDetails() {
   
   useEffect(() => {
     // Fetch ranking table details when the component mounts
-    axios.get(`http://localhost:3001/getRankingTable/${id}`)
+    axios.get(`https://api.fyp23s424.com/getRankingTable/${id}`)
     .then((response) => {
       setRankingTableDetails(response.data);
     })
@@ -89,7 +89,7 @@ function ViewTournamentDetails() {
   };
   
   const exportScoresheet = () =>{
-    window.open(`http://localhost:3001/scoresheet/${tournamentDetails.tournamentSport}.pdf`, "_blank", "noreferrer")
+    window.open(`https://api.fyp23s424.com/scoresheet/${tournamentDetails.tournamentSport}.pdf`, "_blank", "noreferrer")
   }
   
   const exportMatches = () => {
@@ -231,7 +231,7 @@ function ViewTournamentDetails() {
           <div className="sponsor">
           <img
           width={"150px"}
-          src={`http://localhost:3001/tournamentsponsor/${tournamentDetails.tournamentSponsorIcon}`}
+          src={`https://api.fyp23s424.com/tournamentsponsor/${tournamentDetails.tournamentSponsorIcon}`}
           alt={tournamentDetails.tournamentSponsorIcon}
           />
           <p>

@@ -64,7 +64,7 @@ function ViewTournament() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3001/getCurrentUser"
+          "https://api.fyp23s424.com/getCurrentUser"
           );
           setUser(response.data);
         } catch (error) {
@@ -79,7 +79,7 @@ function ViewTournament() {
     
     // useEffect(() => {
     //   // Fetch tournaments when the component mounts
-    //     axios.get(`http://localhost:3001/getTournaments`)
+    //     axios.get(`https://api.fyp23s424.com/getTournaments`)
     //       .then((response) => {
     //         setTournaments(response.data);
     //       })
@@ -95,7 +95,7 @@ function ViewTournament() {
       const fetchData = async () => {
         try {
           if (user) {
-            const response = await axios.get(`http://localhost:3001/getTournaments/${user._id}?sortBy=tournamentStartDate`);
+            const response = await axios.get(`https://api.fyp23s424.com/getTournaments/${user._id}?sortBy=tournamentStartDate`);
             // Parse dates if needed
             const tournamentsWithParsedDates = response.data.map(tournament => ({
               ...tournament,
@@ -126,7 +126,7 @@ function ViewTournament() {
     const handleDelete = async (id) => {
       if (window.confirm('Confirm deletion?')) {
         try {
-          await axios.delete(`http://localhost:3001/deleteTournament/${id}`);
+          await axios.delete(`https://api.fyp23s424.com/deleteTournament/${id}`);
           // Update the local state by filtering out the deleted tournament
           setTournaments((prevTournaments) => prevTournaments.filter(tournament => tournament._id !== id));
         } catch (error) {
@@ -142,7 +142,7 @@ function ViewTournament() {
         setFilteredTournaments([]);
       } else {
         try {
-          const response = await axios.get(`http://localhost:3001/searchTournaments/${searchTerm}/${user._id}`);
+          const response = await axios.get(`https://api.fyp23s424.com/searchTournaments/${searchTerm}/${user._id}`);
           console.log(response.data);
           setFilteredTournaments(response.data)
         } catch (error) {
@@ -154,7 +154,7 @@ function ViewTournament() {
     useEffect(() => {
       // Fetch the list of sports from the database
       axios
-      .get('http://localhost:3001/getSports')
+      .get('https://api.fyp23s424.com/getSports')
       .then((response) => {
         setSportsList(response.data);
       })

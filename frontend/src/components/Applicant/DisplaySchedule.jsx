@@ -21,11 +21,11 @@
 //   useEffect(() => {
 //     const fetchData = async () => {
 //       try {
-//         const tournamentResponse = await axios.get('http://localhost:3001/getTournaments');
+//         const tournamentResponse = await axios.get('https://api.fyp23s424.com/getTournaments');
 //         const tournaments = tournamentResponse.data;
   
 //         const matchPromises = tournaments.map(async (tournament) => {
-//           const responseMatch = await axios.get('http://localhost:3001/getMatches/' + tournament._id);
+//           const responseMatch = await axios.get('https://api.fyp23s424.com/getMatches/' + tournament._id);
 //           const matches = responseMatch.data.map(match => ({
 //             tournament: tournament.tournamentName,
 //             date: match.MatchDate, 

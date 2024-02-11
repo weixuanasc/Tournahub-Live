@@ -17,7 +17,7 @@ function ViewApplicants() {
     if (!tournamentId) return;
     try {
       const { data } = await axios.get(
-        `http://localhost:3001/api/applicationstatus/getApplicationOfTournament/${tournamentId}`
+        `https://api.fyp23s424.com/api/applicationstatus/getApplicationOfTournament/${tournamentId}`
       );
       setApplicants(data.message);
     } catch (error) {
@@ -28,7 +28,7 @@ function ViewApplicants() {
   const fetchTournamentData = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:3001/getTournamentDetails/${tournamentId}`
+        `https://api.fyp23s424.com/getTournamentDetails/${tournamentId}`
       );
       setTournament(data);
     } catch (error) {
@@ -39,7 +39,7 @@ function ViewApplicants() {
   const updateApplicationStatus = async (applicationId, action) => {
     try {
       await axios.put(
-        `http://localhost:3001/api/applicationstatus/updateApplicationStatus/${applicationId}`,
+        `https://api.fyp23s424.com/api/applicationstatus/updateApplicationStatus/${applicationId}`,
         { action }
       );
       fetchApplicationsOfTournaments();
@@ -72,7 +72,7 @@ function ViewApplicants() {
   
           // Update tournament players
           await axios.put(
-            `http://localhost:3001/updateTournamentPlayers/${tournamentId}`,
+            `https://api.fyp23s424.com/updateTournamentPlayers/${tournamentId}`,
             { tournamentPlayers }
           );
   
@@ -80,7 +80,7 @@ function ViewApplicants() {
           // if (tournamentPlayersCount + 1 >= tournamentMaxPlayers) {
           //   // Update tournament status to 'Closed Application'
           //   await axios.put(
-          //     `http://localhost:3001/updateClosedTournamentStatus/${tournamentId}`,
+          //     `https://api.fyp23s424.com/updateClosedTournamentStatus/${tournamentId}`,
           //     { tournamentStatus: "Closed Application" }
           //   );
           //   console.log("Tournament status updated to 'Closed Application'");

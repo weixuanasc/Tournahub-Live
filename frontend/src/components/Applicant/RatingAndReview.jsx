@@ -21,7 +21,7 @@ const RatingAndReview = () => {
   const fetchAllReviews = async () => {
     try {
       const { data, status } = await axios.get(
-        "http://localhost:3001/api/reviews/all"
+        "https://api.fyp23s424.com/api/reviews/all"
       );
       setAllReviews(data.message);
     } catch (error) {
@@ -31,7 +31,7 @@ const RatingAndReview = () => {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3001/getCurrentUser");
+      const { data } = await axios.get("https://api.fyp23s424.com/getCurrentUser");
       setUser(data);
     } catch (error) {
       console.log(error);
@@ -53,7 +53,7 @@ const RatingAndReview = () => {
 
     try {
       const { status, data } = await axios.post(
-        "http://localhost:3001/api/reviews/create",
+        "https://api.fyp23s424.com/api/reviews/create",
         body
       );
       if (status === 200) {
@@ -70,7 +70,7 @@ const RatingAndReview = () => {
   const handleDeleteReview = async (reviewId) => {
     try {
       const { status } = await axios.delete(
-        `http://localhost:3001/api/reviews/${reviewId}`
+        `https://api.fyp23s424.com/api/reviews/${reviewId}`
       );
       if (status === 200) {
         fetchAllReviews();
