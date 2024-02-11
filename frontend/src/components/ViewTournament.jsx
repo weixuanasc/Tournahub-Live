@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import SelectNavbar from "./SelectNavbar";
 import SearchBar from './SearchBarSA';
+import "./Tournament.css";
 
 
 function ViewTournament() {
@@ -83,28 +84,36 @@ function ViewTournament() {
     <div> 
     {SelectNavbar()}
     <h1>Tournament List:</h1>
-    <div>          
-    <SearchBar onSearch={handleSearch} />
-    <label htmlFor="statusFilter">Filter by Status: </label>
-    <select id="statusFilter" value={statusFilter} onChange={handleStatusFilterChange}>
-    <option value="">All</option>
-    <option value="Open for Application">Open for Application</option>
-    <option value="Closed Application">Closed Application</option>
-    <option value="Ongoing">Ongoing</option>
-    <option value="Completed">Completed</option>
-    <option value="Cancelled">Cancelled</option>
-    </select>
-    </div>
-    <label htmlFor="sportFilter">Filter by Sport: </label>
-    <select id="sportFilter" value={sportFilter} onChange={handleSportFilterChange}>
-    <option value="">All</option>
-    {sportsList.map((sport) => (
-      <option key={sport._id} value={sport.name}>
-      {sport.name}
-      </option>
-      ))}
-      {/* Add other sports options as needed */}
+    <div className="search-filters-container">
+      <div className="filters-container">
+      <div className="filter-container">
+      <label htmlFor="statusFilter">Filter by Status </label>
+      <select id="statusFilter" value={statusFilter} onChange={handleStatusFilterChange} className="filter-select">
+      <option value="">All</option>
+      <option value="Open for Application">Open for Application</option>
+      <option value="Closed Application">Closed Application</option>
+      <option value="Ongoing">Ongoing</option>
+      <option value="Completed">Completed</option>
+      <option value="Cancelled">Cancelled</option>
       </select>
+      </div>
+      <div className="filter-container">
+      <label htmlFor="sportFilter">Filter by Sport </label>
+      <select id="sportFilter" value={sportFilter} onChange={handleSportFilterChange} className="filter-select">
+      <option value="">All</option>
+      {sportsList.map((sport) => (
+        <option key={sport._id} value={sport.name}>
+        {sport.name}
+        </option>
+        ))}
+        </select>
+        </div>
+        </div>
+        <div className="search-bar-container">
+        <SearchBar onSearch={handleSearch} />
+        </div>
+        </div>
+        {/* Add other sports options as needed */}
       <p></p>
       {loading ? (
         <p>Loading tournaments...</p>

@@ -124,27 +124,32 @@ router.delete("/:newsId", async (req, res) => {
     res.status(500).json({ message: "could not delete news", success: false });
   }
 });
-//Edit article
 router.route("/edit/:newsId").put(upload.single("photo"), async (req, res) => {
-  const newsId = req.params.newsId;
-  const updatedData = req.body;
+  try {
+    const newsId = req.params.newsId;
+    let updatedData = req.body;
 
-  console.log("Updating news article with ID:", newsId);
-  console.log("Updated data:", updatedData);
+    // If a photo was uploaded, update the photo field
+    if (req.file) {
+      updatedData.photo = req.file.filename; // or req.file.path, depending on your setup
+    }
 
-  NewsModel.findByIdAndUpdate(newsId, updatedData, { new: true })
-    .then((updatedArticle) => {
-      if (!updatedArticle) {
-        console.log("News article not found");
-        return res.status(404).json({ error: "News article not found" });
-      }
-      console.log("News article updated successfully:", updatedArticle);
-      res.json(updatedArticle);
-    })
-    .catch((err) => {
-      console.error("Error updating news article:", err);
-      res.status(500).json({ error: "Internal Server Error" });
-    });
+    console.log("Updating news article with ID:", newsId);
+    console.log("Updated data:", updatedData);
+
+    const updatedArticle = await NewsModel.findByIdAndUpdate(newsId, updatedData, { new: true });
+
+    if (!updatedArticle) {
+      console.log("News article not found");
+      return res.status(404).json({ error: "News article not found" });
+    }
+
+    console.log("News article updated successfully:", updatedArticle);
+    res.json(updatedArticle);
+  } catch (err) {
+    console.error("Error updating news article:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
 // router.route("/edit/:newsId").put(upload.single("photo"), async (req, res) => {

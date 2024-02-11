@@ -68,16 +68,22 @@ const RatingAndReview = () => {
   };
 
   const handleDeleteReview = async (reviewId) => {
-    try {
-      const { status } = await axios.delete(
-        `https://api.fyp23s424.com/api/reviews/${reviewId}`
-      );
-      if (status === 200) {
-        fetchAllReviews();
-        window.alert("Review deleted successfully.");
+    const isConfirmed = window.confirm(
+      "Are you sure you want to delete this review?"
+    );
+
+    if (isConfirmed) {
+      try {
+        const { status } = await axios.delete(
+          `https://api.fyp23s424.com/api/reviews/${reviewId}`
+        );
+        if (status === 200) {
+          fetchAllReviews();
+          window.alert("Review deleted successfully.");
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -113,30 +119,33 @@ const RatingAndReview = () => {
       </div>
 
       <h4>Your Review History</h4>
-    {loading ? (
-      <p>Loading...</p>
-    ) : (
-      <div className="reviewBox">
-        {allReviews.map((review) => (
-          <div className="usernameSize" key={review._id}>
-            <h4>{review.user?.name}</h4>
-            <Rating
-              className="star"
-              name="simple-controlled"
-              value={review.star}
-              readOnly
-            />
-            <p>{review.text}</p>
-            {user?._id === review.user?._id && (
-              <button onClick={() => handleDeleteReview(review._id)}>
-                Delete
-              </button>
-            )}
-          </div>
-        ))}
-      </div>
-    )}
-  </>
-);
-}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="reviewBox">
+          {allReviews.map((review) => (
+            <div className="usernameSize" key={review._id}>
+              <h4>{review.user?.name}</h4>
+              <Rating
+                className="star"
+                name="simple-controlled"
+                value={review.star}
+                readOnly
+              />
+              <p>{review.text}</p>
+              {user?._id === review.user?._id && (
+                <button
+                  className="btn btn-sm btn-danger mr-2"
+                  onClick={() => handleDeleteReview(review._id)}
+                >
+                  Delete
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </>
+  );
+};
 export default RatingAndReview;
