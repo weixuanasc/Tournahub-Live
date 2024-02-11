@@ -1,0 +1,47 @@
+/* UpdateTournament.css */
+
+/* Style specifically for the container in UpdateTournament */
+.UpdateTournament-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style specifically for form fields in UpdateTournament */
+  .UpdateTournament-form-group {
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  /* Style specifically for labels in UpdateTournament */
+  .UpdateTournament-form-group label {
+    margin-bottom: 5px;
+  }
+  
+  /* Style specifically for input fields in UpdateTournament */
+  .UpdateTournament-input {
+    width: calc(50% - 22px); /* Adjust for padding */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Style specifically for the button in UpdateTournament */
+  .UpdateTournament-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .UpdateTournament-button:hover {
+    background-color: #0056b3;
+  }
+  

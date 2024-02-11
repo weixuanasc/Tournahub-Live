@@ -6,6 +6,7 @@ const ApplicantHome = () => {
   const [newsData, setNewsData] = useState([]);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [LoadingNews, setLoadingNews] = useState(true);
   // axios.defaults.withCredentials = true;
 
   useEffect(() => {
@@ -15,7 +16,7 @@ const ApplicantHome = () => {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get("https://api.fyp23s424.com/getCurrentUser", {
+      const { data } = await axios.get("http://localhost:3001/getCurrentUser", {
         withCredentials: true,
       });
       setUser(data);
@@ -29,16 +30,19 @@ const ApplicantHome = () => {
   const fetchAllNews = async () => {
     try {
       const { status, data } = await axios.get(
-        "https://api.fyp23s424.com/api/news/all"
+        "http://localhost:3001/api/news/all"
       );
       setNewsData(data.message);
     } catch (error) {
       console.log(error);
     }
+    finally {
+      setLoadingNews(false);
+    }
   };
   const handleTitleClick = (newsId) => {
     if (newsId) {
-      window.location.href = `https://www.fyp23s424.com/home/news/${newsId}`;
+      window.location.href = `/home/news/${newsId}`;
     }
   };
 
@@ -46,6 +50,9 @@ const ApplicantHome = () => {
     <div>
       <h3>Recommended News For you</h3>
       <div>
+      {loading || LoadingNews ? (
+      <p>Loading...</p>
+      ) : (
         <>
           {newsData.map(
             (news) =>
@@ -53,7 +60,7 @@ const ApplicantHome = () => {
                 <div className="newsBorder" key={news._id}>
                   <a
                     className="newstitle"
-                    href={`https://www.fyp23s424.com/home/news/${news._id}`}
+                    href={`/home/news/${news._id}`}
                     onClick={(e) => {
                       e.preventDefault();
                       handleTitleClick(news._id);
@@ -62,7 +69,7 @@ const ApplicantHome = () => {
                     <div className="newsColumns">
                       <img
                         className="fixed-size-image"
-                        src={`https://api.fyp23s424.com/images/${news.photo}`}
+                        src={`http://localhost:3001/images/${news.photo}`}
                         alt={news.title}
                         onClick={() => handleTitleClick(news._id)}
                       />
@@ -87,7 +94,7 @@ const ApplicantHome = () => {
                   <div className="newsBorder" key={news._id}>
                     <a
                       className="newstitle"
-                      href={`https://www.fyp23s424.com/home/news/${news._id}`}
+                      href={`/home/news/${news._id}`}
                       onClick={(e) => {
                         e.preventDefault();
                         handleTitleClick(news._id);
@@ -97,7 +104,7 @@ const ApplicantHome = () => {
                       <div className="newsColumns">
                         <img
                           className="fixed-size-image"
-                          src={`https://api.fyp23s424.com/images/${news.photo}`}
+                          src={`http://localhost:3001/images/${news.photo}`}
                           alt={news.title}
                           onClick={() => handleTitleClick(news._id)}
                         />
@@ -126,7 +133,7 @@ const ApplicantHome = () => {
         </div>
       ))} */}
         </>
-      </div>
+      )}</div>
     </div>
   );
 };

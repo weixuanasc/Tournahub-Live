@@ -41,7 +41,9 @@ const {
   handleGetOwnTournaments,
   handleUpdateTournament,
   handleUpdateTournamentCollaboratorId,
+  handleUpdateTournamentPlayers,
   UpdateTournamentStatus,
+  handleUpdateTournamentStatus,
   handleCreateTournament,
   handleGetSingleTournament,
   handleDeleteTournament,
@@ -263,11 +265,10 @@ app.post("/CreateStatistics", handleCreateStatistics);
 app.get("/getStatistics/:tournamentId", handleGetStatistics);
 app.put("/updateStatistics/:id", handleUpdateStatistics);
 
-app.put(
-  "/updateTournamentCollaboratorId/:tournamentId",
-  handleUpdateTournamentCollaboratorId
-);
+app.put("/updateTournamentCollaboratorId/:tournamentId", handleUpdateTournamentCollaboratorId);
 app.put("/updateTournamentStatus/:tournamentId", UpdateTournamentStatus);
+
+app.put("/updateTournamentPlayers/:tournamentId", handleUpdateTournamentPlayers);
 
 app.get("/getRankingTable/:tournamentId", handleGetRankingTable);
 app.post("/CreateRankingTable", handleCreateRankingTable);
@@ -275,6 +276,8 @@ app.post("/CreateRankingTable", handleCreateRankingTable);
 app.post("/CreateStatus", handleCreateStatus);
 app.put("/updateStatus/:id", handleUpdateStatus);
 app.get("/getStatus", handleGetStatus);
+
+app.put('/updateClosedTournamentStatus/:tournamentId', handleUpdateTournamentStatus),
 
 //Sponsor API
 app.post("/create-checkout-session-icon", IconPayment);

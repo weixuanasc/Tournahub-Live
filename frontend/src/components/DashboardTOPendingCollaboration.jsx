@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import NavbarTO from "./NavbarTO";
+import "./DashboardTOPendingCollaboration.css";
 
 function DashboardTOPendingCollaboration() {
   const [user, setUser] = useState([]);
@@ -15,7 +16,7 @@ function DashboardTOPendingCollaboration() {
   
   useEffect(() => {
         // Fetch tournaments when the component mounts
-        axios.get('https://api.fyp23s424.com/getTournaments')
+        axios.get('http://localhost:3001/getTournaments')
           .then((response) => {
             setTournaments(response.data);
           })
@@ -29,7 +30,7 @@ function DashboardTOPendingCollaboration() {
       
       useEffect(() => {
         // Fetch tournaments when the component mounts
-        axios.get('https://api.fyp23s424.com/getStatus')
+        axios.get('http://localhost:3001/getStatus')
           .then((response) => {
             setStatus(response.data);
           })
@@ -45,7 +46,7 @@ function DashboardTOPendingCollaboration() {
         const fetchData = async () => {
           try {
             const response = await axios.get(
-              "https://api.fyp23s424.com/getCurrentUser"
+              "http://localhost:3001/getCurrentUser"
             );
             setUser(response.data);
           } catch (error) {
@@ -71,7 +72,7 @@ function DashboardTOPendingCollaboration() {
         // Update status
         try {
           await axios.put(
-            `https://api.fyp23s424.com/updateStatus/${statusIdToUpdate}`,
+            `http://localhost:3001/updateStatus/${statusIdToUpdate}`,
             updatedStatus
           );
           console.log('Status updated successfully');
@@ -88,7 +89,7 @@ function DashboardTOPendingCollaboration() {
           // Update the tournaments database
           try {
             await axios.put(
-              `https://api.fyp23s424.com/updateTournamentCollaboratorId/${tournamentIdToUpdate}`,
+              `http://localhost:3001/updateTournamentCollaboratorId/${tournamentIdToUpdate}`,
               { collaboratorId: updatedStatus.collaboratorId }
             );
             console.log('Tournament updated successfully');
@@ -168,12 +169,13 @@ const renderTournamentList = () => {
   }
 
   return (
-    <table style={{ margin: 'auto', width: '50%', textAlign: 'left' }}>
+    <table className="dashboard-table">
       <thead>
         <tr>
           <th>Tournament</th>
           <th>Details</th>
           <th>Status</th>
+          {currentTab === 'Pending' && <th>Action</th>}
         </tr>
       </thead>
       <tbody>
@@ -188,38 +190,47 @@ const renderTournamentList = () => {
                   <span key={index}>{s.collaboratorStatus}</span>
                 ))}
             </td>
-            <td>
-              {/* Conditionally render buttons based on currentTab */}
-              {currentTab === 'Pending' && (
-                <>
-                  <button onClick={() => handleAccept(tournament._id)}>Accept</button>
-                  <button onClick={() => handleReject(tournament._id)}>Reject</button>
-                </>
-              )}
-            </td>
+            {currentTab === 'Pending' && (
+              <td>
+                <button
+                  className="accept-button"
+                  onClick={() => handleAccept(tournament._id)}
+                >
+                  Accept
+                </button>
+                <button
+                  className="reject-button"
+                  onClick={() => handleReject(tournament._id)}
+                >
+                  Reject
+                </button>
+              </td>
+            )}
           </tr>
         ))}
       </tbody>
     </table>
   );
-};
+}  
 
-  return (
-    <div>
-      <NavbarTO />
+return (
+  <div>
+    <NavbarTO />
+    <div className="collaboration-status">
       <h1>Collaboration Status: </h1>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}} className="navbar-container">
+      <div className="navbar-container">
         <nav>
           <button onClick={() => setCurrentTab("Pending")}>Pending</button>
           <button onClick={() => setCurrentTab("Accepted")}>Accepted</button>
           <button onClick={() => setCurrentTab("Rejected")}>Rejected</button>
         </nav>
       </div>
-      <div>
-      {renderTournamentList()}
-      </div>
     </div>
-  );
+    <div>
+      {renderTournamentList()}
+    </div>
+  </div>
+);
 }
 
 export default DashboardTOPendingCollaboration;

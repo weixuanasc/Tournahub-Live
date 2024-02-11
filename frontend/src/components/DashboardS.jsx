@@ -13,7 +13,7 @@ function DashboardS() {
 
   useEffect(() => {
     axios
-      .get("https://api.fyp23s424.com/DashboardS")
+      .get("http://localhost:3001/DashboardS")
       .then((res) => {
         if (res.data === "Login is successful") {
           // Set and store verify in localStorage
@@ -42,7 +42,7 @@ function DashboardS() {
         } else {
           // If not, fetch user data from the server
           const response = await axios.get(
-            "https://api.fyp23s424.com/getCurrentUser"
+            "http://localhost:3001/getCurrentUser"
           );
           setUser(response.data);
           // Store user data in localStorage
@@ -69,7 +69,6 @@ function DashboardS() {
       <p>{verify}</p>
       {user && (
         <div>
-          <p>User ID: {user._id}</p>
           <p>Email: {user.email}</p>
         </div>
       )}

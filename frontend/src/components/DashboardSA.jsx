@@ -13,7 +13,7 @@ function DashboardSA() {
 
   useEffect(() => {
     axios
-      .get("https://api.fyp23s424.com/DashboardSA")
+      .get("http://localhost:3001/DashboardSA")
       .then((res) => {
         if (res.data === "Login is successful") {
           // Set and store verify in localStorage
@@ -42,7 +42,7 @@ function DashboardSA() {
         } else {
           // If not, fetch user data from the server
           const response = await axios.get(
-            "https://api.fyp23s424.com/getCurrentUser"
+            "http://localhost:3001/getCurrentUser"
           );
           setUser(response.data);
           // Store user data in localStorage
@@ -56,7 +56,7 @@ function DashboardSA() {
         } else {
           // If not, fetch user data from the server
           const verifyResponse = await axios.get(
-            "https://api.fyp23s424.com/DashboardSA"
+            "http://localhost:3001/DashboardSA"
           );
           setVerify("Welcome! You are logged in as a System Administrator");
           // Store verify in localStorage
@@ -86,7 +86,6 @@ function DashboardSA() {
       <p>{verify}</p>
       {user && (
         <div>
-          <p>User ID: {user._id}</p>
           <p>Email: {user.email}</p>
         </div>
       )}

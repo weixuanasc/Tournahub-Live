@@ -31,7 +31,7 @@ function CreateTournament() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://api.fyp23s424.com/getCurrentUser"
+          "http://localhost:3001/getCurrentUser"
         );
         setUser(response.data);
       } catch (error) {
@@ -53,7 +53,7 @@ function CreateTournament() {
   useEffect(() => {
     // Fetch the list of sports from the database
     axios
-      .get('https://api.fyp23s424.com/getSports')
+      .get('http://localhost:3001/getSports')
       .then((response) => {
         setSportsList(response.data);
       })
@@ -95,7 +95,7 @@ function CreateTournament() {
     e.preventDefault();
     const finalTournamentFormat = tournamentFormat === 'Others' ? customFormat : tournamentFormat;
     axios
-      .post('https://api.fyp23s424.com/CreateTournament', 
+      .post('http://localhost:3001/CreateTournament', 
       { organizerId, 
         tournamentName, tournamentSport, tournamentSkillLevel,
         tournamentFormat : finalTournamentFormat,
@@ -121,14 +121,14 @@ function CreateTournament() {
             <h2>Create Tournament</h2>
 
             <div className="mb-2">
-  <label htmlFor="organizerId">Organizer ID</label>
+  <label htmlFor="organizerId"></label>
   <input
     type="text"
     id="organizerId"
     className="form-control"
     value={organizerId}
     onChange={(e) => setorganizerId(e.target.value)}
-    readOnly
+    hidden
   />
 </div>
             <div className="mb-2">
@@ -139,6 +139,7 @@ function CreateTournament() {
                 placeholder="Enter Name"
                 className="form-control"
                 onChange={(e) => settournamentName(e.target.value)}
+                required
               />
             </div>
             <div className="mb-2">
@@ -148,6 +149,7 @@ function CreateTournament() {
                 className="form-control"
                 value={tournamentSport}
                 onChange={(e) => settournamentSport(e.target.value)}
+                required
               >
                 <option value="" disabled>
                   Select Sport
@@ -166,6 +168,7 @@ function CreateTournament() {
               className="form-control"
               value={tournamentSkillLevel}
               onChange={(e) => settournamentSkillLevel(e.target.value)}
+              required
               >
                 <option value="" disabled>
                   Select Skill Level
@@ -187,6 +190,7 @@ function CreateTournament() {
             // Reset customFormat when selecting a different format
             setCustomFormat('');
           }}
+          required
         >
           <option value="Single Elimination">Single Elimination</option>
           <option value="Double Elimination">Double Elimination</option>
@@ -204,28 +208,10 @@ function CreateTournament() {
             className="form-control"
             value={customFormat}
             onChange={handleCustomFormatChange}
+            
           />
         </div>
       )}
-
-            {/* <div className="mb-2">
-        <label htmlFor="tournamentFormat">Format</label>
-        <select
-          id="tournamentFormat"
-          className="form-control"
-          value={tournamentFormat}
-          onChange={(e) => {
-            settournamentFormat(e.target.value);
-          }}
-        >
-          <option value="" disabled>
-            Select Format
-          </option>
-          <option value="Single Elimination">Single Elimination</option>
-          <option value="Double Elimination">Double Elimination</option>
-          <option value="Others">Others...</option>
-        </select>
-      </div> */}
 
             <div className="mb-2">
               <label htmlFor="tournamentVenue">Venue</label>
@@ -235,6 +221,7 @@ function CreateTournament() {
                 placeholder="Enter Venue"
                 className="form-control"
                 onChange={(e) => settournamentVenue(e.target.value)}
+                required
               />
             </div>
             <div className="mb-2">
@@ -245,6 +232,7 @@ function CreateTournament() {
                 placeholder="Enter Details"
                 className="form-control"
                 onChange={(e) => settournamentDetails(e.target.value)}
+                required
               />
             </div>
             <div className="mb-2">
@@ -255,6 +243,7 @@ function CreateTournament() {
                 className="form-control"
                 value={tournamentStartDate}
                 onChange={(e) => settournamentStartDate(e.target.value)}
+                required
               />
             </div>
             <div className="mb-2">
@@ -264,6 +253,7 @@ function CreateTournament() {
                 id="settournamentEndDate"
                 className="form-control"
                 onChange={(e) => settournamentEndDate(e.target.value)}
+                required
               />
             </div>
             <div className="mb-2">
@@ -283,6 +273,7 @@ function CreateTournament() {
                     settournamentNumberofplayers(0);
                   }
                 }}
+                required
               />
             </div>
 

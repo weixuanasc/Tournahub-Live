@@ -43,6 +43,7 @@ import TournamentApplication from "./components/Applicant/TournamentApplication"
 import AddScoresheet from "./components/AddScoresheet";
 import ViewTournament from "./components/ViewTournament";
 import UserApplicationStatus from "./components/Applicant/UserApplicationStatus";
+import ScheduleGuide from "./components/ScheduleGuide";
 
 export default function App() {
   const loginSA = window.localStorage.getItem("loggedInSA");
@@ -141,6 +142,7 @@ export default function App() {
             element={<InvitationPage />}
           />
           <Route path="/InvitationPage/:id" element={<InvitationPage />} />
+          <Route path="/ScheduleGuide/:id" element={<ScheduleGuide />} />
 
           <Route path="/SponsorshipModels" element={<SponsorshipModels />} />
           <Route path="/PaymentSuccess" element={<PaymentSuccess />} />

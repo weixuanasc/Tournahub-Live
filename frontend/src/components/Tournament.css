@@ -1,0 +1,144 @@
+/* ViewTournament.css */
+
+/* Style for the table */
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  /* Style for table headers */
+  th {
+    background-color: #f2f2f2;
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Style for table rows */
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Style for table data */
+  td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+  }
+  
+  /* Style for buttons */
+  .btn {
+    padding: 8px 16px;
+    margin: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+  .tournament-box {
+    position: relative;
+    border: 3px solid #040404; /* Border */
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9; /* Light gray background color */
+  }
+  .additional-buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  /* CSS for the action buttons */
+  .action-buttons {
+    margin-top: 10px;
+  }
+  
+  .action-buttons button,
+  .additional-buttons button {
+    margin-right: 10px;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .action-buttons .btn-info {
+    background-color: #5bc0de; /* Blue */
+  }
+  
+  .action-buttons .btn-warning {
+    background-color: #f0ad4e; /* Orange */
+  }
+  
+  .action-buttons .btn-success {
+    background-color: #5cb85c; /* Green */
+  }
+  
+  .action-buttons .btn-primary {
+    background-color: #337ab7; /* Dark blue */
+  }
+  
+  .action-buttons .btn-danger {
+    background-color: #d9534f; /* Red */
+  }
+  .create-tournament-container {
+    position: relative;
+    margin-top: 10px; /* Adjust as needed */
+  }
+  
+  .create-tournament-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .search-filters-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .filters-container {
+    display: flex;
+    margin-left: 140px;
+  }
+  
+  .filter-container {
+    margin-right: 10px; /* Adjust the margin between filters */
+  }
+  
+  .filter-select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .filter-select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  .search-bar-container {
+    margin-left: 50px; /* Adjust the margin between filters and search bar */
+  }
+  

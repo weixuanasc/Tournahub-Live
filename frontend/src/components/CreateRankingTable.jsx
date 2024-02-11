@@ -12,7 +12,7 @@ function CreateRankingTable() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('https://api.fyp23s424.com/CreateRankingTable', { tournamentId, Winner, RunnerUp })
+      .post('http://localhost:3001/CreateRankingTable', { tournamentId, Winner, RunnerUp })
       .then((result) => {
         console.log(result);
         alert('Ranking Table created successfully');
@@ -29,13 +29,13 @@ function CreateRankingTable() {
           <form onSubmit={handleSubmit}>
             <h2>Create Ranking Table</h2>
             <div className="mb-2">
-              <label htmlFor="tournamentId">Tournament ID</label>
+              <label htmlFor="tournamentId"></label>
               <input
                 type="text"
                 id="tournamentId"
                 value={tournamentId}
                 className="form-control"
-                readOnly
+                hidden
               />
             </div>
             <div className="mb-2">
@@ -46,6 +46,7 @@ function CreateRankingTable() {
                 placeholder="Winner of Tournament"
                 className="form-control"
                 onChange={(e) => setWinner(e.target.value)}
+                required
               />
             </div>
             <div className="mb-2">
@@ -56,6 +57,7 @@ function CreateRankingTable() {
                 placeholder="Runner-Up"
                 className="form-control"
                 onChange={(e) => setRunnerUp(e.target.value)}
+                required
               />
             </div>
             <button type="submit" className="btn btn-success">

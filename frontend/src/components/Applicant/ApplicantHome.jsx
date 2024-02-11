@@ -6,6 +6,7 @@ const ApplicantHome = () => {
   const [newsData, setNewsData] = useState([]);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [LoadingNews, setLoadingNews] = useState(true);
   // axios.defaults.withCredentials = true;
 
   useEffect(() => {
@@ -35,6 +36,9 @@ const ApplicantHome = () => {
     } catch (error) {
       console.log(error);
     }
+    finally {
+      setLoadingNews(false);
+    }
   };
   const handleTitleClick = (newsId) => {
     if (newsId) {
@@ -46,6 +50,9 @@ const ApplicantHome = () => {
     <div>
       <h2>Latest News</h2>
       <div>
+      {loading || LoadingNews ? (
+      <p>Loading...</p>
+      ) : (
         <>
           {newsData.map(
             (news) =>
@@ -103,7 +110,7 @@ const ApplicantHome = () => {
           <h3 onClick={() => handleTitleClick(news._id)}>
             <img
               className="fixed-size-image"
-              src={`http://localhost:3001/images/${news.photo}`}
+              src={`https://api.fyp23s424.com/images/${news.photo}`}
               alt={news.title}
             />
             {news.title}
@@ -112,7 +119,7 @@ const ApplicantHome = () => {
         </div>
       ))} */}
         </>
-      </div>
+      )}</div>
     </div>
   );
 };

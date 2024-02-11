@@ -21,7 +21,7 @@ const RatingAndReview = () => {
   const fetchAllReviews = async () => {
     try {
       const { data, status } = await axios.get(
-        "https://api.fyp23s424.com/api/reviews/all"
+        "http://localhost:3001/api/reviews/all"
       );
       setAllReviews(data.message);
     } catch (error) {
@@ -31,7 +31,7 @@ const RatingAndReview = () => {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get("https://api.fyp23s424.com/getCurrentUser");
+      const { data } = await axios.get("http://localhost:3001/getCurrentUser");
       setUser(data);
     } catch (error) {
       console.log(error);
@@ -53,7 +53,7 @@ const RatingAndReview = () => {
 
     try {
       const { status, data } = await axios.post(
-        "https://api.fyp23s424.com/api/reviews/create",
+        "http://localhost:3001/api/reviews/create",
         body
       );
       if (status === 200) {
@@ -70,7 +70,7 @@ const RatingAndReview = () => {
   const handleDeleteReview = async (reviewId) => {
     try {
       const { status } = await axios.delete(
-        `https://api.fyp23s424.com/api/reviews/${reviewId}`
+        `http://localhost:3001/api/reviews/${reviewId}`
       );
       if (status === 200) {
         fetchAllReviews();
@@ -113,6 +113,9 @@ const RatingAndReview = () => {
       </div>
 
       <h4>Your Review History</h4>
+    {loading ? (
+      <p>Loading...</p>
+    ) : (
       <div className="reviewBox">
         {allReviews.map((review) => (
           <div className="usernameSize" key={review._id}>
@@ -132,8 +135,8 @@ const RatingAndReview = () => {
           </div>
         ))}
       </div>
-    </>
-  );
-};
-
+    )}
+  </>
+);
+}
 export default RatingAndReview;

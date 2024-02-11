@@ -19,7 +19,7 @@ function AddMatches() {
     const handleSubmit = (e) => {
       e.preventDefault();
       axios
-        .post('https://api.fyp23s424.com/CreateMatches', 
+        .post('http://localhost:3001/CreateMatches', 
         { tournamentId, MatchNumber, MatchName, MatchDate, MatchTime, Player1, Player2, Player1_Score, Player2_Score, Winner })
         .then((result) => {
           console.log(result);
@@ -37,13 +37,13 @@ function AddMatches() {
             <form onSubmit={handleSubmit}>
             <h2>Create Match</h2>
               <div className="mb-2">
-                <label htmlFor="tournamentId">Tournament ID</label>
+                <label htmlFor="tournamentId"></label>
                 <input
                   type="text"
                   id="tournamentId"
                   value={tournamentId}
                   className="form-control"
-                  readOnly
+                  hidden
                 />
               </div>
               <div className="mb-2">
@@ -54,6 +54,7 @@ function AddMatches() {
                   placeholder="Enter Match Number"
                   className="form-control"
                   onChange={(e) => setMatchNumber(e.target.value)}
+                  required
                 />
               </div>
               <div className="mb-2">
@@ -64,6 +65,7 @@ function AddMatches() {
                   placeholder="Enter Match Name"
                   className="form-control"
                   onChange={(e) => setMatchName(e.target.value)}
+                  required
                 />
               </div>
               <div className="mb-2">
@@ -74,6 +76,7 @@ function AddMatches() {
                   placeholder="Enter Match Date"
                   className="form-control"
                   onChange={(e) => setMatchDate(e.target.value)}
+                  required
                 />
               </div>
               <div className="mb-2">
@@ -84,6 +87,7 @@ function AddMatches() {
                   placeholder="Enter Match Time"
                   className="form-control"
                   onChange={(e) => setMatchTime(e.target.value)}
+                  required
                 />
               </div>
               <div className="mb-2">
@@ -94,6 +98,7 @@ function AddMatches() {
                   placeholder="Player 1 Name"
                   className="form-control"
                   onChange={(e) => setPlayer1(e.target.value)}
+                  required
                 />
               </div>
               <div className="mb-2">
@@ -104,9 +109,10 @@ function AddMatches() {
                   placeholder="Player 2 Name"
                   className="form-control"
                   onChange={(e) => setPlayer2(e.target.value)}
+                  required
                 />
               </div>
-              <div className="mb-2">
+              {/* <div className="mb-2">
                 <label htmlFor="Player1_Score">Player 1 Score</label>
                 <input
                   type="text"
@@ -135,7 +141,7 @@ function AddMatches() {
                   className="form-control"
                   onChange={(e) => setWinner(e.target.value)}
                 />
-              </div>
+              </div> */}
               <button type="submit" className="btn btn-success">
                 Create
               </button>

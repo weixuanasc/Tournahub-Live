@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import NavbarTO from './NavbarTO';
+import "./UpdateTournament.css";
 
 function UpdateTournament() {
   const [tournamentDetails, setTournamentDetails] = useState([]);
@@ -39,7 +40,7 @@ function UpdateTournament() {
   
   useEffect(() => {
     axios
-    .get(`https://api.fyp23s424.com/getTournamentDetails/${id}`)
+    .get(`http://localhost:3001/getTournamentDetails/${id}`)
     .then((response) => {
       setTournamentDetails(response.data);
       setUpdatedTournaments([response.data]);
@@ -68,7 +69,7 @@ function UpdateTournament() {
       if (customFormat !== '') {
         updatedTournament.tournamentFormat = customFormat;
       }
-
+      
       updatedTournament.tournamentNumberofmatches = manualNumberOfMatchesInput
       ? manualNumberOfMatches
       : calculateNumberOfMatches(
@@ -76,7 +77,7 @@ function UpdateTournament() {
         updatedTournament.tournamentNumberofplayers || ''
         );
         axios
-        .put(`https://api.fyp23s424.com/updateTournament/${tournamentId}`, updatedTournament)
+        .put(`http://localhost:3001/updateTournament/${tournamentId}`, updatedTournament)
         .then((result) => {
           console.log(result);
           alert('Tournament updated successfully');
@@ -119,19 +120,19 @@ function UpdateTournament() {
                 setCustomFormat('');
                 setManualNumberOfMatches('');
               }
-      
+              
               const isOthers = value === 'Others';
               const updatedMatches = calculateNumberOfMatches(
                 isOthers ? customFormat || '' : value,
                 tournament.tournamentNumberofplayers || 0
-              );
-      
-              return {
-                ...tournament,
-                tournamentFormat: isOthers ? (customFormat ? customFormat : 'Others') : value,
-                tournamentNumberofmatches: manualNumberOfMatchesInput ? manualNumberOfMatches : updatedMatches,
-              };
-            }
+                );
+                
+                return {
+                  ...tournament,
+                  tournamentFormat: isOthers ? (customFormat ? customFormat : 'Others') : value,
+                  tournamentNumberofmatches: manualNumberOfMatchesInput ? manualNumberOfMatches : updatedMatches,
+                };
+              }
               
               return tournament;
             })
@@ -142,7 +143,7 @@ function UpdateTournament() {
           useEffect(() => {
             // Fetch the list of sports from the database
             axios
-            .get('https://api.fyp23s424.com/getSports')
+            .get('http://localhost:3001/getSports')
             .then((response) => {
               setSportsList(response.data);
             })
@@ -150,21 +151,26 @@ function UpdateTournament() {
           }, []); // Run only once when the component mounts
           
           return (
-            <div>
+            <div className="update-tournament-container">
             <NavbarTO />
             {loadingTournament ? (
               <p>Loading...</p>
               ) : (
                 <div>
-                <p>Tournament Name:</p>
+                <div className="form-group">
+                <label htmlFor="tournamentName">Tournament Name:</label>
                 <input
                 type="text"
+                className="form-control"
                 value={updatedTournaments.find((tournament) => tournament._id === id)?.tournamentName || ''}
                 onChange={(e) => handleInputChange(e, id, 'tournamentName')}
                 />
+                </div>
                 
-                <p>Sport:</p>
+                <div className="form-group">
+                <label htmlFor="tournamentSport">Sport:</label>
                 <select
+                className="form-control"
                 value={updatedTournaments.find((tournament) => tournament._id === id)?.tournamentSport || ''}
                 onChange={(e) => handleInputChange(e, id, 'tournamentSport')}
                 >
@@ -174,10 +180,12 @@ function UpdateTournament() {
                   </option>
                   ))}
                   </select>
+                  </div>
                   
-                  <p>Format:</p>
+                  <div className="form-group">
+                  <label htmlFor="tournamentFormat">Format:</label>
                   <select
-                  type="text"
+                  className="form-control"
                   value={updatedTournaments.find((tournament) => tournament._id === id)?.tournamentFormat || ''}
                   onChange={(e) => handleInputChange(e, id, 'tournamentFormat')}
                   >
@@ -185,56 +193,74 @@ function UpdateTournament() {
                   <option value="Double Elimination">Double Elimination</option>
                   <option value="Others">Others...</option>
                   </select>
-                  
                   {updatedTournaments.find((tournament) => tournament._id === id)?.tournamentFormat === 'Others' && (
-                    <div>
-                    <p>Custom Format:</p>
+                    <div className="form-group">
+                    <label htmlFor="customFormat">Custom Format:</label>
                     <input
                     type="text"
+                    className="form-control"
                     value={customFormat}
                     onChange={(e) => setCustomFormat(e.target.value)}
                     />
                     </div>
                     )}
+                    </div>
                     
-                    <p>Venue:</p>
+                    <div className="form-group">
+                    <label htmlFor="tournamentVenue">Venue:</label>
                     <input
                     type="text"
+                    className="form-control"
                     value={updatedTournaments.find((tournament) => tournament._id === id)?.tournamentVenue || ''}
                     onChange={(e) => handleInputChange(e, id, 'tournamentVenue')}
                     />
+                    </div>
                     
-                    <p>Details:</p>
+                    <div className="form-group">
+                    <label htmlFor="tournamentDetails">Details:</label>
                     <input
                     type="text"
+                    className="form-control"
                     value={updatedTournaments.find((tournament) => tournament._id === id)?.tournamentDetails || ''}
                     onChange={(e) => handleInputChange(e, id, 'tournamentDetails')}
                     />
+                    </div>
                     
-                    <p>Start Date:</p>
+                    <div className="form-group">
+                    <label htmlFor="tournamentStartDate">Start Date:</label>
                     <input
                     type="date"
+                    className="form-control"
                     value={formatDate(updatedTournaments.find((tournament) => tournament._id === id)?.tournamentStartDate || '')}
                     onChange={(e) => handleInputChange(e, id, 'tournamentStartDate')}
                     />
+                    </div>
                     
-                    <p>End Date:</p>
+                    <div className="form-group">
+                    <label htmlFor="tournamentEndDate">End Date:</label>
                     <input
                     type="date"
+                    className="form-control"
                     value={formatDate(updatedTournaments.find((tournament) => tournament._id === id)?.tournamentEndDate || '')}
                     onChange={(e) => handleInputChange(e, id, 'tournamentEndDate')}
                     />
+                    </div>
                     
-                    <p>Number of Players:</p>
+                    <div className="form-group">
+                    <label htmlFor="tournamentNumberofplayers">Number of Players:</label>
                     <input
                     type="text"
+                    className="form-control"
                     value={updatedTournaments.find((tournament) => tournament._id === id)?.tournamentNumberofplayers || ''}
                     onChange={(e) => handleInputChange(e, id, 'tournamentNumberofplayers')}
                     />
+                    </div>
                     
-                    <p>Number of Matches:</p>
+                    <div className="form-group">
+                    <label htmlFor="tournamentNumberofMatches">Number of Matches:</label>
                     <input
                     type="text"
+                    className="form-control"
                     value={manualNumberOfMatchesInput ? manualNumberOfMatches : calculateNumberOfMatches(
                       updatedTournaments.find((tournament) => tournament._id === id)?.tournamentFormat || '',
                       updatedTournaments.find((tournament) => tournament._id === id)?.tournamentNumberofplayers || ''
@@ -242,9 +268,12 @@ function UpdateTournament() {
                       onChange={(e) => setManualNumberOfMatches(e.target.value)}
                       disabled={!manualNumberOfMatchesInput}
                       />
+                      </div>
                       
-                      <p>Tournament Status:</p>
+                      <div className="form-group">
+                      <label htmlFor="tournamentStatus">Tournament Status:</label>
                       <select
+                      className="form-control"
                       value={(updatedTournaments.find((tournament) => tournament._id === id) || {}).tournamentStatus || ''}
                       onChange={(e) => handleInputChange(e, id, 'tournamentStatus')}
                       >
@@ -255,15 +284,18 @@ function UpdateTournament() {
                       <option value="Cancelled">Cancelled</option>
                       {/* Add more options as needed */}
                       </select>
+                      </div>
                       
                       {/* Add more input fields and labels for other fields as needed */}
                       
-                      <p></p>
-                      <button onClick={(e) => updateTournament(e, id)}>Update Tournament</button>
+                      <div className="form-group">
+                      <button className="btn btn-primary" onClick={(e) => updateTournament(e, id)}>Update Tournament</button>
+                      </div>
                       </div>
                       )}
                       </div>
                       );
+                      
                     }
                     
                     export default UpdateTournament;

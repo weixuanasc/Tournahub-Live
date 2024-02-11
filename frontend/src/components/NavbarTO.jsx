@@ -41,6 +41,9 @@ export default function NavbarC() {
           <div className="menu-icon" onClick={handleClick}>
             <MenuIcon />
           </div>
+          <Link to={`/ViewTournament`} className="nav-links">
+            Tournament List
+          </Link>
           <Link to={`/Tournament`} className="nav-links">
             Manage Tournaments
           </Link>

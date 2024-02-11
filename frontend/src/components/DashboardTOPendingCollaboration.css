@@ -1,0 +1,76 @@
+/* DashboardTOPendingCollaboration.css */
+  
+  .dashboard-table button:hover {
+    background-color: #0056b3;
+  }
+  
+  .dashboard-table button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Add margin between accept and reject buttons */
+  .dashboard-table button + button {
+    margin-left: 10px;
+  }
+  
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* DashboardTOPendingCollaboration.css */
+
+/* Styling for the collaboration status container */
+.collaboration-status {
+    text-align: center;
+  }
+  
+  /* Styling for the navigation buttons */
+  .navbar-container nav {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbar-container nav button {
+    margin: 0 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border: none;
+    background-color: #576470;
+    color: #fff;
+  }
+  
+  .navbar-container nav button:hover {
+    background-color: #2e3134;
+  }
+  /* DashboardTOPendingCollaboration.css */
+
+/* Styling for the accept button */
+.accept-button {
+    background-color: #28a745; /* Green */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+  }
+  
+  .accept-button:hover {
+    background-color: #218838; /* Darker shade of green */
+  }
+  
+  /* Styling for the reject button */
+  .reject-button {
+    background-color: #dc3545; /* Red */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+  }
+  
+  .reject-button:hover {
+    background-color: #c82333; /* Darker shade of red */
+  }
+  
+  
+  

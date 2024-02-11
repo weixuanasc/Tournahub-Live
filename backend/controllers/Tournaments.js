@@ -142,6 +142,64 @@ const handleUpdateTournamentCollaboratorId = async (req, res) => {
   }
 };
 
+const handleUpdateTournamentPlayers = async (req, res) => {
+  const { tournamentId } = req.params;
+  const { tournamentPlayers } = req.body; 
+
+  try {
+    const updatedTournament = await TournamentModel.findByIdAndUpdate(
+      tournamentId,
+      { $addToSet: { tournamentPlayers: { $each: tournamentPlayers } } }, 
+      { new: true }
+    );
+
+    res.json(updatedTournament);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
+const handleUpdateTournamentStatus = async (req, res) => {
+  const { tournamentId } = req.params;
+
+  try {
+    // Find tournament by ID
+    const tournament = await TournamentModel.findById(tournamentId);
+
+    if (!tournament) {
+      return res.status(404).json({ message: 'Tournament not found' });
+    }
+
+    // Check if tournament application is already closed
+    if (tournament.tournamentStatus === 'Closed Application') {
+      return res.status(400).json({ message: 'Tournament application is already closed' });
+    }
+
+    // Convert tournament number of players to a number
+    const maxPlayers = parseInt(tournament.tournamentNumberofplayers);
+
+    // Check if tournament has reached maximum number of players
+    if (tournament.tournamentPlayers.length === maxPlayers) {
+      // Update tournament status to 'Closed Application'
+      tournament.tournamentStatus = 'Closed Application';
+      await tournament.save();
+      return res.status(200).json({ message: 'Tournament status updated to Closed Application' });
+    }
+
+    // If tournament application is not yet closed
+    res.status(400).json({ message: 'Tournament application is not yet closed' });
+  } catch (error) {
+    // Handle errors
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+
+
+
+
 const UpdateTournamentStatus = async (req, res) => {
   try {
     const tournamentId = req.params.tournamentId;
@@ -585,6 +643,8 @@ module.exports = {
   handleGetSingleTournament,
   handleDeleteTournament,
   handleUpdateTournamentCollaboratorId,
+  handleUpdateTournamentPlayers,
+  handleUpdateTournamentStatus,
   handleUpdateTournament,
   countTournaments,
   handleSearchTournaments,
