@@ -44,6 +44,8 @@ import AddScoresheet from "./components/AddScoresheet";
 import ViewTournament from "./components/ViewTournament";
 import UserApplicationStatus from "./components/Applicant/UserApplicationStatus";
 import ScheduleGuide from "./components/ScheduleGuide";
+import ContactUs from "./components/ContactUs";
+import AboutUs from "./components/AboutUs";
 
 export default function App() {
   const loginSA = window.localStorage.getItem("loggedInSA");
@@ -71,6 +73,8 @@ export default function App() {
             }
           />
           <Route path="/home/news/:newsId" element={<NewsDetails />} />
+          <Route path="/ContactUs" element={<ContactUs />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/UploadNews" element={<NewsForm />} />
           <Route path="/RatingAndReview" element={<RatingAndReview />} />
           <Route path="/Signup" element={<Signup />} />

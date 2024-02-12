@@ -69,6 +69,11 @@ body {
   transition: transform 250ms;
   color: orange;
 }
+.icon:hover {
+  transform: translateY(-3px);
+  transition: transform 250ms;
+  color: orange;
+}
 
 .menu-icon {
   display: none;

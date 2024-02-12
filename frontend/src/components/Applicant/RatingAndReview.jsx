@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import NavbarA from "./NavbarA";
 import "./RatingAndReview.css";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const RatingAndReview = () => {
   const [value, setValue] = useState(0);
@@ -138,6 +139,8 @@ const RatingAndReview = () => {
                   className="btn btn-sm btn-danger mr-2"
                   onClick={() => handleDeleteReview(review._id)}
                 >
+                  {" "}
+                  <DeleteIcon />
                   Delete
                 </button>
               )}

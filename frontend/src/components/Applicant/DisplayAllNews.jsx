@@ -35,8 +35,7 @@ const ApplicantHome = () => {
       setNewsData(data.message);
     } catch (error) {
       console.log(error);
-    }
-    finally {
+    } finally {
       setLoadingNews(false);
     }
   };
@@ -50,47 +49,13 @@ const ApplicantHome = () => {
     <div>
       <h3>Recommended News For you</h3>
       <div>
-      {loading || LoadingNews ? (
-      <p>Loading...</p>
-      ) : (
-        <>
-          {newsData.map(
-            (news) =>
-              news.category === user.interestedSport && (
-                <div className="newsBorder" key={news._id}>
-                  <a
-                    className="newstitle"
-                    href={`/home/news/${news._id}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleTitleClick(news._id);
-                    }}
-                  >
-                    <div className="newsColumns">
-                      <img
-                        className="fixed-size-image"
-                        src={`https://api.fyp23s424.com/images/${news.photo}`}
-                        alt={news.title}
-                        onClick={() => handleTitleClick(news._id)}
-                      />
-                      {/* 
-                      <h3 className="category-box">{news.category}</h3> */}
-                      <div>
-                        <h3>{news.title}</h3>
-                        <p>Written by: {news.user?.name}</p>
-                      </div>
-                      {/* <p>{news.content}</p> */}
-                    </div>
-                  </a>
-                </div>
-              )
-          )}
-          <div className="newline">
-            <h3>Other News</h3>
+        {loading || LoadingNews ? (
+          <p>Loading...</p>
+        ) : (
+          <div className="skalent">
             {newsData.map(
               (news) =>
-                news.category !== user.interestedSport &&
-                news.category && (
+                news.category === user.interestedSport && (
                   <div className="newsBorder" key={news._id}>
                     <a
                       className="newstitle"
@@ -100,7 +65,6 @@ const ApplicantHome = () => {
                         handleTitleClick(news._id);
                       }}
                     >
-                      {/* <p>{news.user?.name}</p> */}
                       <div className="newsColumns">
                         <img
                           className="fixed-size-image"
@@ -108,32 +72,56 @@ const ApplicantHome = () => {
                           alt={news.title}
                           onClick={() => handleTitleClick(news._id)}
                         />
+                        {/* 
+                      <h3 className="category-box">{news.category}</h3> */}
                         <div>
                           <h3>{news.title}</h3>
                           <p>Written by: {news.user?.name}</p>
                         </div>
+                        {/* <p>{news.content}</p> */}
                       </div>
-                      {/* <p>{news.content}</p> */}
                     </a>
                   </div>
                 )
             )}
+
+            <div className="newline">
+              <h3>Other News</h3>
+              {newsData.map(
+                (news) =>
+                  news.category !== user.interestedSport &&
+                  news.category && (
+                    <div className="newsBorder" key={news._id}>
+                      <a
+                        className="newstitle"
+                        href={`/home/news/${news._id}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleTitleClick(news._id);
+                        }}
+                      >
+                        {/* <p>{news.user?.name}</p> */}
+                        <div className="newsColumns">
+                          <img
+                            className="fixed-size-image"
+                            src={`https://api.fyp23s424.com/images/${news.photo}`}
+                            alt={news.title}
+                            onClick={() => handleTitleClick(news._id)}
+                          />
+                          <div>
+                            <h3>{news.title}</h3>
+                            <p>Written by: {news.user?.name}</p>
+                          </div>
+                        </div>
+                        {/* <p>{news.content}</p> */}
+                      </a>
+                    </div>
+                  )
+              )}
+            </div>
           </div>
-          {/* {newsData.map((news) => (
-        <div key={news._id}>
-          <h3 onClick={() => handleTitleClick(news._id)}>
-            <img
-              className="fixed-size-image"
-              src={`https://api.fyp23s424.com/images/${news.photo}`}
-              alt={news.title}
-            />
-            {news.title}
-          </h3>
-          <p>{news.content}</p>
-        </div>
-      ))} */}
-        </>
-      )}</div>
+        )}
+      </div>
     </div>
   );
 };
