@@ -207,6 +207,12 @@ const NewsDetails = ({ match }) => {
       }
     }
   };
+
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    return new Date(dateString).toLocaleDateString('en-GB', options);
+  };
+
   return (
     <div>
       {SelectNavbar()}
@@ -225,7 +231,7 @@ const NewsDetails = ({ match }) => {
             }}
           />
           <p>{news.author}</p>
-          <p>{news.postDate}</p>
+          <p>{formatDate(news.postDate)}</p>
           <pre class="pre-container">{news.content}</pre>
           <div align="center">
             <ShareSocial
