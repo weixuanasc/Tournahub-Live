@@ -69,8 +69,10 @@ function DashboardA() {
       {/* <p>Dashboard: User</p> */}
       {/* <p>{verify}</p> */}
       {user && (
-        <div>
-          <p>Welcome Back {user.name}!</p>
+        <div className="sporty">
+          <br />
+          <h2>Welcome Back {user.name}!</h2>
+          <br />
         </div>
       )}
       <DisplayAllNews />

@@ -216,7 +216,7 @@ const NewsDetails = ({ match }) => {
           <h6>{news.category}</h6>
 
           <img
-            width={"200px"}
+            width={"600px"}
             src={`https://api.fyp23s424.com/images/${news.photo}`}
             alt={news.title}
             onError={(e) => {
@@ -242,7 +242,6 @@ const NewsDetails = ({ match }) => {
               return (
                 <p className="usernameSize" key={comment._id}>
                   <h4>{comment.user?.name}</h4>
-
                   <p>{comment.comments}</p>
 
                   {comment.user?._id === user?._id && (
@@ -254,6 +253,13 @@ const NewsDetails = ({ match }) => {
                       Delete
                     </button>
                   )}
+                  <p style={{ textAlign: "left" }}>
+                    {new Date(comment.createdAt).toLocaleDateString("en-GB", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </p>
                 </p>
               );
             })}
@@ -265,13 +271,13 @@ const NewsDetails = ({ match }) => {
                 e.target.elements.commentText.value = "";
               }}
             >
-              <input
-                type="text"
+              <textarea
                 name="commentText"
                 className="commentTextBox"
                 placeholder="Add a comment"
                 value={userInput}
                 onChange={writtenComment}
+                style={{ overflowY: "auto", maxHeight: "100px" }}
               />
               <button className="mainBtns" type="submit">
                 Submit

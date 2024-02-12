@@ -6,6 +6,7 @@ import axios from "axios";
 import NavbarA from "./NavbarA";
 import "./RatingAndReview.css";
 import DeleteIcon from "@mui/icons-material/Delete";
+import ReviewsIcon from "@mui/icons-material/Reviews";
 
 const RatingAndReview = () => {
   const [value, setValue] = useState(0);
@@ -92,14 +93,22 @@ const RatingAndReview = () => {
     <>
       <NavbarA />
       <div className="middle">
-        <h2 className="book_now_text">Rate us</h2>
-        <h4 className="book_now_text">Tell us about your experience</h4>
+        <h2 className="book_now_text">
+          <br />
+          <ReviewsIcon style={{ marginRight: "10px", fontSize: 45 }} />
+          Rate us
+        </h2>
+        <br />
+        <h5 className="book_now_text">We would like to hear from you! </h5>
+        <h5>Tell us about your experience</h5>
         <Box
           sx={{
             "& > legend": { mt: 2 },
           }}
         >
-          <div className="text">Ratings:</div>
+          <div className="text">
+            <h3>Ratings:</h3>
+          </div>
           <Rating
             name="simple-controlled"
             value={value}
@@ -118,7 +127,7 @@ const RatingAndReview = () => {
           Submit
         </button>
       </div>
-
+      <br />
       <h4>Your Review History</h4>
       {loading ? (
         <p>Loading...</p>

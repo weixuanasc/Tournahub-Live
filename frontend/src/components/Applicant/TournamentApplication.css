@@ -11,6 +11,7 @@
   align-items: "center";
   justify-content: center;
 }
+
 .displayall {
   flex-direction: column;
   float: left;
@@ -84,4 +85,7 @@
 .scroll-container {
   position: relative;
   z-index: 1;
+}
+.sporty h2 {
+  font-family: "Anton", sans-serif;
 }

@@ -3,6 +3,8 @@ import axios from "axios";
 import NavbarA from "./NavbarA";
 import "./TournamentApplication.css";
 import bgmImage from "../images/background_application.jpg";
+import SportsTennisIcon from "@mui/icons-material/SportsTennis";
+import SportsFootballIcon from "@mui/icons-material/SportsFootball";
 
 const TournamentApplication = () => {
   const [openTournaments, setOpenTournaments] = useState([]);
@@ -153,24 +155,34 @@ const TournamentApplication = () => {
         alt="Background"
         style={{ transform: `translateY(${scrollY * 0.01}px)` }}
       />
-      <h2>Open Tournaments</h2>
-      <h4>Recommended match for your skill level:</h4>
-      <div className="direction">
-        {renderFilteredTournaments((tournament) => {
-          const skillLevelMatches =
-            tournament.tournamentSkillLevel?.toLowerCase() ===
-            user?.skillLevel?.toLowerCase();
-          return skillLevelMatches;
-        })}
-      </div>
-      <div className="newline">
-        <h4>Other matches:</h4>
-        {renderFilteredTournaments((tournament) => {
-          const skillLevelDiffers =
-            tournament.tournamentSkillLevel?.toLowerCase() !==
-            user?.skillLevel?.toLowerCase();
-          return skillLevelDiffers;
-        })}
+      <br />
+      <h1>Open Tournaments</h1>
+      <br />
+      <div className="sporty">
+        <h2>
+          <SportsTennisIcon style={{ marginRight: "10px", fontSize: 45 }} />
+          Recommended for your skill level:
+        </h2>
+        <div className="direction">
+          {renderFilteredTournaments((tournament) => {
+            const skillLevelMatches =
+              tournament.tournamentSkillLevel?.toLowerCase() ===
+              user?.skillLevel?.toLowerCase();
+            return skillLevelMatches;
+          })}
+        </div>
+        <div className="newline">
+          <h2>
+            <SportsFootballIcon style={{ marginRight: "10px", fontSize: 45 }} />
+            Other matches:
+          </h2>
+          {renderFilteredTournaments((tournament) => {
+            const skillLevelDiffers =
+              tournament.tournamentSkillLevel?.toLowerCase() !==
+              user?.skillLevel?.toLowerCase();
+            return skillLevelDiffers;
+          })}
+        </div>
       </div>
     </>
   );
