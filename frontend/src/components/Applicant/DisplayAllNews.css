@@ -23,7 +23,7 @@
   text-decoration: none;
 }
 .newstitle:hover {
-  color: orange;
+  color: darkgoldenrod;
   text-decoration: underline;
 }
 .fixed-size-image {
@@ -129,7 +129,7 @@
   text-align: center;
 }
 .title-overlay:hover {
-  color: orange;
+  color: darkorange;
   text-decoration: underline;
 }
 
@@ -139,4 +139,10 @@
 
 .sporty h2 {
   font-family: "Anton", sans-serif;
+}
+.sporty h1 {
+  font-family: "Anton", sans-serif;
+}
+.sporty p {
+  font-size: 18px;
 }

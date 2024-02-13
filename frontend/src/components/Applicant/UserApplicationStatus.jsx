@@ -4,12 +4,27 @@ import NavbarA from "./NavbarA";
 import "./TournamentApplication.css";
 import { useNavigate } from "react-router-dom";
 import SportsHandballIcon from "@mui/icons-material/SportsHandball";
+import bgmImage2 from "../images/details.jpg";
 
 const UserApplicationStatus = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [applications, setApplications] = useState([]);
   const navigate = useNavigate();
+  const [scrollY, setScrollY] = useState(0);
+
+  //scrolling animation
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleNavigateToViewTournamentDetails = (tournamentId) => {
     navigate(`/ViewTournamentDetails/${tournamentId}`);
@@ -54,6 +69,12 @@ const UserApplicationStatus = () => {
   return (
     <>
       <NavbarA />
+      <img
+        className="bg"
+        src={bgmImage2}
+        alt="Background"
+        style={{ transform: `translateY(${scrollY * 0.001}px)` }}
+      />
       <div>
         <br />
         <h2>

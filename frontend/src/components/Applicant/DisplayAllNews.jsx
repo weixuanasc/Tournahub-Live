@@ -8,6 +8,7 @@ import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import RecommendIcon from "@mui/icons-material/Recommend";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
+import bgmImage3 from "../images/details2.jpg";
 
 const DisplayAllNews = () => {
   const [newsData, setNewsData] = useState([]);
@@ -15,7 +16,20 @@ const DisplayAllNews = () => {
   const [loading, setLoading] = useState(true);
   const [LoadingNews, setLoadingNews] = useState(true);
   // axios.defaults.withCredentials = true;
+  const [scrollY, setScrollY] = useState(0);
 
+  //scrolling animation
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   useEffect(() => {
     fetchData();
     fetchAllNews();
@@ -96,6 +110,12 @@ const DisplayAllNews = () => {
 
   return (
     <div className="sporty">
+      <img
+        className="bg"
+        src={bgmImage3}
+        alt="Background"
+        style={{ transform: `translateY(${scrollY * 0.001}px)` }}
+      />
       <div>
         {/* <h2>All News</h2> */}
         <Slider {...slickSettings}>

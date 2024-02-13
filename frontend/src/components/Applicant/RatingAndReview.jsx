@@ -7,6 +7,7 @@ import NavbarA from "./NavbarA";
 import "./RatingAndReview.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ReviewsIcon from "@mui/icons-material/Reviews";
+import bgmImage4 from "../images/details3.jpg";
 
 const RatingAndReview = () => {
   const [value, setValue] = useState(0);
@@ -14,7 +15,20 @@ const RatingAndReview = () => {
   const [user, setUser] = useState(null);
   const [allReviews, setAllReviews] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [scrollY, setScrollY] = useState(0);
 
+  //scrolling animation
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   useEffect(() => {
     fetchData();
     fetchAllReviews();
@@ -92,6 +106,12 @@ const RatingAndReview = () => {
   return (
     <>
       <NavbarA />
+      <img
+        className="bg2"
+        src={bgmImage4}
+        alt="Background"
+        style={{ transform: `translateY(${scrollY * 0.001}px)` }}
+      />
       <div className="middle">
         <h2 className="book_now_text">
           <br />
