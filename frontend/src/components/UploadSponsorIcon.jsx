@@ -54,7 +54,7 @@ function UploadSponsorIcon(){
                         required
                     />
             </div>
-                <button type="submit" className="btn btn-success w-100 rounded-0">Register</button>
+                <button type="submit" className="btn btn-success w-100 rounded-0">Submit</button>
             </form> 
         </div>
         </div>
