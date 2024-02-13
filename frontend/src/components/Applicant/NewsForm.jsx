@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
 import NavbarTO from "../../components/NavbarTO";
 import "./NewsForm.css";
+import FeedOutlinedIcon from "@mui/icons-material/FeedOutlined";
 
 const NewsForm = () => {
   // const [image, setImage] = useState("");
@@ -243,14 +244,24 @@ const NewsForm = () => {
       console.error("Error updating the article:", error);
     }
   };
+
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+    return new Date(dateString).toLocaleDateString("en-GB", options);
+  };
   //-------------------------------------------------------------
 
   return (
     <div>
       <NavbarTO />
-      <h1>Write a new article:</h1>
+      <br />
+      <h1>
+        <FeedOutlinedIcon style={{ marginRight: "10px", fontSize: 45 }} />
+        Write a New Article:
+      </h1>
+      <br />
       <form action="">
-        <h6>Select sport category:</h6>
+        <h5>Select sport category:</h5>
         <div className="mb-2">
           <select
             type="select"
@@ -319,27 +330,32 @@ const NewsForm = () => {
             required
           />
         </div>
-        <button onClick={handleSubmit}>Submit</button>
+        <button className="btn btn-success btn-sm" onClick={handleSubmit}>
+          Submit
+        </button>
       </form>
       <div>
         <h1>
           ---------------------------------------------------------------------------
         </h1>
         <h1>Edit news:</h1>
+        <br />
         <h6>
           Disclaimer: After clicking the "Edit" button, the field to edit the
           news is below. Only change the field with updates.
         </h6>
+        <br />
         {allNews
           .filter((news) => user?._id === news.user?._id)
           .map((news) => (
-            <div className="Tframe" key={news._id}>
+            <div className="articleForm" key={news._id}>
               <h5>{news.title}</h5>
               <p>Written by: {news.user?.name}</p>
               <p>Category: {news.category}</p>
+              <p>Posted on: {formatDate(news.postDate)}</p>
               <h6>{news.content}</h6>
               <img
-                width={"200px"}
+                width={"250px"}
                 src={`https://api.fyp23s424.com/images/${news.photo}`}
                 alt={news.title}
                 onError={(e) => {
@@ -448,12 +464,14 @@ const NewsForm = () => {
               />
             </div>
             <button
+              className="btn btn-success "
               type="submit"
               onClick={() => handleUpdate(editArticleData.id)}
             >
               Update
             </button>
             <button
+              className="btn btn-warning"
               type="button"
               onClick={() => {
                 setIsEditing(false);

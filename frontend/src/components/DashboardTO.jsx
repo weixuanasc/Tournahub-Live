@@ -64,11 +64,15 @@ function DashboardTO() {
   return (
     <div>
       <NavbarTO />
-      <p>Dashboard: Tournament Organizer</p>
-      <p>{verify}</p>
+      {/* <p>Dashboard: Tournament Organizer</p> */}
+      {/* <p>{verify}</p> */}
       {user && (
-        <div>
-          <p>Email: {user.email}</p>
+        <div className="sporty">
+          {/* <p>User ID: {user._id}</p>
+          <p>Email: {user.email}</p> */}
+          <br />
+          <h2>Welcome Back {user.name}!</h2>
+          <br />
         </div>
       )}
       <DisplayAllNews />

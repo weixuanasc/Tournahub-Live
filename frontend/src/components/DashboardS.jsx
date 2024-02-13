@@ -65,11 +65,15 @@ function DashboardS() {
   return (
     <div>
       <NavbarS />
-      <p>Dashboard: Sponsor</p>
-      <p>{verify}</p>
+      {/* <p>Dashboard: Sponsor</p>
+      <p>{verify}</p> */}
       {user && (
-        <div>
-          <p>Email: {user.email}</p>
+        <div className="sporty">
+          {/* <p>User ID: {user._id}</p>
+          <p>Email: {user.email}</p> */}
+          <br />
+          <h2>Welcome Back {user.name}!</h2>
+          <br />
         </div>
       )}
       <DisplayAllNews />

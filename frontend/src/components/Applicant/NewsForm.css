@@ -6,3 +6,16 @@ textarea {
   padding: 10px; /* Add some padding for better aesthetics */
   box-sizing: border-box; /* Include padding and border in the total width and height */
 }
+
+.articleForm {
+  padding: 10px;
+  flex-direction: column;
+  display: flex;
+  border: 3px solid rgb(23, 23, 23);
+  border-radius: 10px;
+  margin: 0 auto;
+  width: 700px;
+  display: "flex";
+  align-items: "center";
+  justify-content: center;
+}
