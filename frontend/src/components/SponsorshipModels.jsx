@@ -131,7 +131,7 @@ function SponsorshipModels() {
           <h5>$50.00</h5>
           <h6>This sponsorship option allows you to sponsor a tournament. </h6>
           <h6>
-            After paying, you brand's logo will appear on the top of the
+            After paying, your brand's logo will appear on the top of the
             tournament details page. Increase your brand visibility with this
             option!
           </h6>
