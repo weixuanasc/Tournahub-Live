@@ -146,3 +146,10 @@
 .sporty p {
   font-size: 18px;
 }
+
+@media print {
+  .navbar,
+  .toolbar {
+    display: none;
+  }
+}

@@ -13,6 +13,24 @@
   margin-block-end: 5px;
 }
 
+.Sframe {
+  padding: 20px;
+  flex-direction: column;
+  display: flex;
+  border: 3px solid rgb(23, 23, 23);
+  /* background-color: orange; */
+  border-radius: 20px;
+  margin: 0 auto;
+  width: 650px;
+  display: "flex";
+  align-items: "center";
+  justify-content: center;
+  margin-block-end: 5px;
+}
+.Sframe button {
+  align-self: flex-end;
+}
+
 .displayall {
   flex-direction: column;
   float: left;

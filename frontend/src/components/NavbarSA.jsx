@@ -3,23 +3,30 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "./images/Tournahub.png";
+import HomeIcon from "@mui/icons-material/Home";
 
 export default function NavbarSA() {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const Logout = () => {
-    window.localStorage.removeItem("loggedInSA")
-    window.localStorage.removeItem("verify")
-    window.localStorage.removeItem("user")
-  }
+    window.localStorage.removeItem("loggedInSA");
+    window.localStorage.removeItem("verify");
+    window.localStorage.removeItem("user");
+  };
 
   return (
-      <div>
+    <div>
       <div className="navbar">
         <div className="navbar-container">
-          <Link to="/DashboardSA" onClick={closeMobileMenu}>
+          <Link to="/DashboardSA">
             {<img className="nav-logo" src={logo} />}
+          </Link>
+          <Link to="/DashboardSA" className="nav-links">
+            <HomeIcon
+              className="icon"
+              style={{ color: "white", marginRight: "0px" }}
+            />
           </Link>
           <Link to={`/AddScoresheet`} className="nav-links">
             Add Scoresheet
@@ -35,7 +42,7 @@ export default function NavbarSA() {
           </Link>
           <Link to={`/ManageUsers`} className="nav-links">
             Manage Users
-          </Link>         
+          </Link>
           <Link to={`/verifyUsers`} className="nav-links">
             Verify Users
           </Link>

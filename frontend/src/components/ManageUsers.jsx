@@ -1,19 +1,19 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import NavbarSA from './NavbarSA';
-import SearchBar from './SearchBarSA';
-import './tableContainer.css';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import NavbarSA from "./NavbarSA";
+import SearchBar from "./SearchBarSA";
+import "./tableContainer.css";
 
 function ManageUsers() {
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('https://api.fyp23s424.com/ManageUsers');
+        const response = await axios.get("https://api.fyp23s424.com/ManageUsers");
         setUsers(response.data);
       } catch (error) {
         console.log(error);
@@ -26,13 +26,15 @@ function ManageUsers() {
   const handleSearch = async (searchTerm) => {
     setSearchTerm(searchTerm);
 
-    if (searchTerm.trim() === '') {
+    if (searchTerm.trim() === "") {
       // If the search term is empty, show all users
       setFilteredUsers([]);
     } else {
       // Otherwise, filter users based on the search term
       try {
-        const response = await axios.get(`https://api.fyp23s424.com/searchUsers/${searchTerm}`);
+        const response = await axios.get(
+          `https://api.fyp23s424.com/searchUsers/${searchTerm}`
+        );
         setFilteredUsers(response.data);
       } catch (error) {
         console.log(error);
@@ -41,47 +43,50 @@ function ManageUsers() {
   };
 
   const handleSuspend = async (id) => {
-    if (window.confirm('Confirm suspension?')) {
+    if (window.confirm("Confirm suspension?")) {
       try {
         await axios.put(`https://api.fyp23s424.com/suspendUser/${id}`);
-        window.location.reload()
+        window.location.reload();
       } catch (error) {
         console.log(error);
       }
     }
-  }
+  };
 
   return (
     <>
       <div>
-      <NavbarSA />
+        <NavbarSA />
       </div>
       <div className="">
         <div className="">
-        <h2>Manage Users</h2>
-        <SearchBar onSearch={handleSearch}/>
+          <h2>Manage Users</h2>
+          <SearchBar onSearch={handleSearch} />
           <table className="table">
             <thead>
               <tr>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Password</th>
+                {/* <th>Password</th> */}
                 <th>User Type</th>
                 <th>isActive</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {searchTerm.trim() === ''
+              {searchTerm.trim() === ""
                 ? users.map((user) => (
                     <tr key={user._id}>
                       <td>{user.name}</td>
                       <td>{user.email}</td>
-                      <td>{user.password}</td>
+                      {/* <td>{user.password}</td> */}
                       <td>{user.usertype}</td>
                       <td>{user.isActive}</td>
                       <td>
-                        <Link to={`/UpdateUsers/${user._id}`} className="btn btn-success">
+                        <Link
+                          to={`/UpdateUsers/${user._id}`}
+                          className="btn btn-success"
+                        >
                           Update
                         </Link>
                         <button
@@ -95,13 +100,16 @@ function ManageUsers() {
                   ))
                 : filteredUsers.map((user) => (
                     <tr key={user._id}>
-                        <td>{user.name}</td>
-                        <td>{user.email}</td>
-                        <td>{user.password}</td>
-                        <td>{user.usertype}</td>
-                        <td>{user.isActive}</td>
+                      <td>{user.name}</td>
+                      <td>{user.email}</td>
+                      {/* <td>{user.password}</td> */}
+                      <td>{user.usertype}</td>
+                      <td>{user.isActive}</td>
                       <td>
-                        <Link to={`/UpdateUsers/${user._id}`} className="btn btn-success">
+                        <Link
+                          to={`/UpdateUsers/${user._id}`}
+                          className="btn btn-success"
+                        >
                           Update
                         </Link>
                         <button
