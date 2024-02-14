@@ -166,7 +166,7 @@ const DisplaySchedule = () => {
 
             // Return the event object with the start time included
             return {
-              title: `${tournament.tournamentName} - ${match.MatchName}`,
+              title: `${tournament.tournamentName} - ${match.MatchName} - ${tournament.tournamentVenue}`,
               start: startDate, // Combined date and time
               tournament: tournament.tournamentName,
               venue: tournament.tournamentVenue,
@@ -263,6 +263,7 @@ const DisplaySchedule = () => {
     }
   };
 
+  // Doesn't actually do anything
   const renderCustomHeaderCenter = () => {
     if (currentEvent && currentEvent.extendedProps) {
       const tournament = currentEvent.extendedProps.tournament;
@@ -301,7 +302,7 @@ const DisplaySchedule = () => {
           initialView={"dayGridMonth"}
           headerToolbar={{
             start: "today prev,next",
-            center: renderCustomHeaderCenter(),
+            center: "title",
             end: "dayGridMonth,timeGridWeek,timeGridDay",
           }}
           height={"auto"}
