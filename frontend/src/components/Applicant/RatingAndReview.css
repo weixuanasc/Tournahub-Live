@@ -56,13 +56,14 @@
   border: 2px solid grey;
   border-radius: 5px;
   width: 350px;
-  padding: 15px;
+  justify-content: space-between;
+  padding: 7px;
 }
 
 .usernameSize h4 {
   font-size: 18px;
   font-weight: bold;
-  padding: 15px;
+  padding-top: 5px;
 }
 
 .usernameSize p {
@@ -70,6 +71,22 @@
   font-size: 15px;
   font-weight: bold;
   line-height: 25px;
+}
+.usernameSize h6 {
+  letter-spacing: 1px;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 25px;
+}
+.left {
+  flex: 1;
+}
+
+.right {
+  text-align: right;
+}
+.usernameSize button {
+  align-self: flex-end;
 }
 .star {
   display: inline-flex;

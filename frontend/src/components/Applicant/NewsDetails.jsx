@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./NewsDetails.css";
 import { ShareSocial } from "react-share-social";
 import DeleteIcon from "@mui/icons-material/Delete";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import "./NewsDetails.css";
 
 const NewsDetails = ({ match }) => {
   const [news, setNews] = useState(null);
@@ -49,7 +51,7 @@ const NewsDetails = ({ match }) => {
             withCredentials: true,
           }
         );
-        console.log("current user ", data);
+        // console.log("current user ", data);
         setUser(data);
       } catch (error) {
         console.log(error);
@@ -209,8 +211,8 @@ const NewsDetails = ({ match }) => {
   };
 
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-    return new Date(dateString).toLocaleDateString('en-GB', options);
+    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+    return new Date(dateString).toLocaleDateString("en-GB", options);
   };
 
   return (
@@ -246,9 +248,19 @@ const NewsDetails = ({ match }) => {
               console.log(comment);
 
               return (
-                <p className="usernameSize" key={comment._id}>
-                  <h4>{comment.user?.name}</h4>
-                  <p>{comment.comments}</p>
+                <p className="usernameSizeD" key={comment._id}>
+                  <h4>
+                    <AccountCircleIcon style={{ marginRight: "7px" }} />
+                    {comment.user?.name}
+                  </h4>
+                  <p1 style={{ textAlign: "left" }}>
+                    {new Date(comment.createdAt).toLocaleDateString("en-GB", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </p1>
+                  <h6>{comment.comments}</h6>
 
                   {comment.user?._id === user?._id && (
                     <button
@@ -256,16 +268,8 @@ const NewsDetails = ({ match }) => {
                       onClick={() => handleCommentDelete(comment._id)}
                     >
                       <DeleteIcon />
-                      Delete
                     </button>
                   )}
-                  <p style={{ textAlign: "left" }}>
-                    {new Date(comment.createdAt).toLocaleDateString("en-GB", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </p>
                 </p>
               );
             })}

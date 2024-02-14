@@ -47,7 +47,9 @@ const RatingAndReview = () => {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get("https://api.fyp23s424.com/getCurrentUser");
+      const { data } = await axios.get("https://api.fyp23s424.com/getCurrentUser", {
+        withCredentials: true,
+      });
       setUser(data);
     } catch (error) {
       console.log(error);
@@ -102,6 +104,10 @@ const RatingAndReview = () => {
       }
     }
   };
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+    return new Date(dateString).toLocaleDateString("en-GB", options);
+  };
 
   return (
     <>
@@ -155,7 +161,12 @@ const RatingAndReview = () => {
         <div className="reviewBox">
           {allReviews.map((review) => (
             <div className="usernameSize" key={review._id}>
-              <h4>{review.user?.name}</h4>
+              <div className="left">
+                <h4>{review.user?.name}</h4>
+              </div>
+              <div className="right">
+                <h6>{formatDate(review.createdAt)}</h6>
+              </div>
               <Rating
                 className="star"
                 name="simple-controlled"
@@ -170,7 +181,6 @@ const RatingAndReview = () => {
                 >
                   {" "}
                   <DeleteIcon />
-                  Delete
                 </button>
               )}
             </div>

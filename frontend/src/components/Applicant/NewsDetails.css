@@ -27,25 +27,33 @@
   border-color: #007bff;
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
 }
-.usernameSize {
+.usernameSizeD {
   flex-direction: column;
   display: flex;
-  border: 2px solid blue;
+  border: 2px solid grey;
   border-radius: 5px;
-  width: 500px;
+  width: 350px;
+  padding: 10px;
 }
 
-.usernameSize h4 {
-  font-size: 1.5rem;
+.usernameSizeD h4 {
+  font-size: 1.2rem;
   font-weight: 700;
   text-align: left;
-  padding: 0px;
 }
 
-.usernameSize p {
+.usernameSizeD p1 {
+  letter-spacing: 1px;
+  font-size: 12px;
+  line-height: 25px;
+}
+.usernameSizeD p {
   letter-spacing: 1px;
   font-size: 14px;
   line-height: 25px;
+}
+.usernameSizeD button {
+  align-self: flex-end;
 }
 .middle {
   overflow: hidden;
