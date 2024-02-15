@@ -5,6 +5,7 @@ import SelectNavbar from "./SelectNavbar";
 import SearchBar from "./SearchBarSA";
 import "./Tournament.css";
 import ScoreboardIcon from "@mui/icons-material/Scoreboard";
+import bgmImage2 from "./images/details.jpg";
 
 function ViewTournament() {
   const [tournaments, setTournaments] = useState([]);
@@ -15,9 +16,23 @@ function ViewTournament() {
   const [sportFilter, setSportFilter] = useState(""); // State to store selected sport filter
   const [sportsList, setSportsList] = useState([]);
   const navigate = useNavigate();
+  const [scrollY, setScrollY] = useState(0);
   const handleNavigateToViewTournamentDeatils = (tournamentId) => {
     navigate(`/ViewTournamentDetails/${tournamentId}`);
   };
+
+  //scrolling animation
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -85,6 +100,12 @@ function ViewTournament() {
   return (
     <div>
       {SelectNavbar()} <br />
+      <img
+        className="bg"
+        src={bgmImage2}
+        alt="Background"
+        style={{ transform: `translateY(${scrollY * 0.001}px)` }}
+      />
       <h1>
         <ScoreboardIcon style={{ marginRight: "10px", fontSize: 45 }} />
         Tournament List:
@@ -154,16 +175,20 @@ function ViewTournament() {
             >
               <thead>
                 <tr>
-                  <th>Tournament Name</th>
-                  <th>Sport</th>
-                  <th>Format</th>
-                  <th>Number of Matches</th>
-                  <th>Date</th>
-                  <th>Tournament Status</th>
-                  <th>Details</th>
+                  <th style={{ backgroundColor: "orange" }}>Tournament Name</th>
+                  <th style={{ backgroundColor: "orange" }}>Sport</th>
+                  <th style={{ backgroundColor: "orange" }}>Format</th>
+                  <th style={{ backgroundColor: "orange" }}>
+                    Number of Matches
+                  </th>
+                  <th style={{ backgroundColor: "orange" }}>Date</th>
+                  <th style={{ backgroundColor: "orange" }}>
+                    Tournament Status
+                  </th>
+                  <th style={{ backgroundColor: "orange" }}>Details</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody style={{ backgroundColor: "white" }}>
                 {(searchTerm.trim() === "" ? tournaments : filteredTournaments)
                   .filter(
                     (tournament) =>

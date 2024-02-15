@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import NavbarTO from "../../components/NavbarTO";
 import "./NewsForm.css";
 import FeedOutlinedIcon from "@mui/icons-material/FeedOutlined";
+import bgmImage2 from "../images/details.jpg";
 
 const NewsForm = () => {
   // const [image, setImage] = useState("");
@@ -17,6 +18,7 @@ const NewsForm = () => {
   const content = useRef(null);
   const photo = useRef(null);
   const category = useRef("");
+  const [scrollY, setScrollY] = useState(0);
 
   const [newsData, setnewsData] = useState({
     category: "",
@@ -28,6 +30,18 @@ const NewsForm = () => {
     // user: user ? user._id : "",
     user: user ? { _id: user._id, name: user.name } : null,
   });
+  //scrolling animation
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleInputChange = (e) => {
     setnewsData({
@@ -253,6 +267,12 @@ const NewsForm = () => {
 
   return (
     <div>
+      <img
+        className="bg"
+        src={bgmImage2}
+        alt="Background"
+        style={{ transform: `translateY(${scrollY * 0.001}px)` }}
+      />
       <NavbarTO />
       <br />
       <h1>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import NavbarTO from "./NavbarTO";
+import bgmImage from "./images/background_application.jpg";
 
 function ViewApplicants() {
   const { tournamentId } = useParams();
@@ -10,8 +11,19 @@ function ViewApplicants() {
   const [loading, setLoading] = useState(true);
   const [updatedPlayer, setUpdatedPlayer] = useState(null);
   const [error, setError] = useState(null);
+  const [scrollY, setScrollY] = useState(0);
+  //scrolling animation
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
 
+    window.addEventListener("scroll", handleScroll);
 
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const fetchApplicationsOfTournaments = async () => {
     if (!tournamentId) return;
@@ -43,7 +55,7 @@ function ViewApplicants() {
         { action }
       );
       fetchApplicationsOfTournaments();
-  
+
       if (action === "APPROVED") {
         const updatedApplicants = applicants.map((application) => {
           if (application._id === applicationId) {
@@ -54,28 +66,30 @@ function ViewApplicants() {
           }
           return application;
         });
-  
+
         // Update state with the new array of applicants
         setApplicants(updatedApplicants);
-  
+
         // Retrieve userId from the approved application
         const approvedApplication = updatedApplicants.find(
           (application) => application._id === applicationId
         );
-  
+
         if (approvedApplication && approvedApplication.user) {
           const userId = approvedApplication.user._id;
           const tournamentPlayersCount = tournament.tournamentPlayers.length;
-          const tournamentMaxPlayers = parseInt(tournament.tournamentNumberofplayers);
-  
+          const tournamentMaxPlayers = parseInt(
+            tournament.tournamentNumberofplayers
+          );
+
           const tournamentPlayers = [...tournament.tournamentPlayers, userId];
-  
+
           // Update tournament players
           await axios.put(
             `https://api.fyp23s424.com/updateTournamentPlayers/${tournamentId}`,
             { tournamentPlayers }
           );
-  
+
           // // Check if the tournament is now full
           // if (tournamentPlayersCount + 1 >= tournamentMaxPlayers) {
           //   // Update tournament status to 'Closed Application'
@@ -92,7 +106,6 @@ function ViewApplicants() {
       setError("Error updating application status: " + error.message);
     }
   };
-  
 
   useEffect(() => {
     if (!tournamentId) return;
@@ -103,6 +116,12 @@ function ViewApplicants() {
   return (
     <>
       <NavbarTO />
+      <img
+        className="bg"
+        src={bgmImage}
+        alt="Background"
+        style={{ transform: `translateY(${scrollY * 0.001}px)` }}
+      />
       <div>
         <h2>Applicants for {tournament?.tournamentName}</h2>
 

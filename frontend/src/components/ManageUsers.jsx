@@ -4,11 +4,25 @@ import { Link } from "react-router-dom";
 import NavbarSA from "./NavbarSA";
 import SearchBar from "./SearchBarSA";
 import "./tableContainer.css";
+import bgmImage from "./images/background_application.jpg";
 
 function ManageUsers() {
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [scrollY, setScrollY] = useState(0);
+  //scrolling animation
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -57,6 +71,12 @@ function ManageUsers() {
     <>
       <div>
         <NavbarSA />
+        <img
+          className="bg"
+          src={bgmImage}
+          alt="Background"
+          style={{ transform: `translateY(${scrollY * 0.001}px)` }}
+        />
       </div>
       <div className="">
         <div className="">
@@ -65,12 +85,12 @@ function ManageUsers() {
           <table className="table">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Email</th>
+                <th style={{ background: "orange" }}>Name</th>
+                <th style={{ background: "orange" }}>Email</th>
                 {/* <th>Password</th> */}
-                <th>User Type</th>
-                <th>isActive</th>
-                <th>Action</th>
+                <th style={{ background: "orange" }}>User Type</th>
+                <th style={{ background: "orange" }}>isActive</th>
+                <th style={{ background: "orange" }}>Action</th>
               </tr>
             </thead>
             <tbody>

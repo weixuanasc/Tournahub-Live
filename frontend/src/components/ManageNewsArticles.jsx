@@ -1,18 +1,32 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import NavbarSA from './NavbarSA';
-import SearchBar from './SearchBarSA';
-import './tableContainer.css'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import NavbarSA from "./NavbarSA";
+import SearchBar from "./SearchBarSA";
+import "./tableContainer.css";
+import bgmImage2 from "./images/details.jpg";
 
 function ManageNewsArticles() {
   const [news, setNews] = useState([]);
   const [filteredNews, setFilteredNews] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [scrollY, setScrollY] = useState(0);
+  //scrolling animation
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get('https://api.fyp23s424.com/api/news/all');
+        const response = await axios.get("https://api.fyp23s424.com/api/news/all");
         setNews(response.data.message);
       } catch (error) {
         console.log(error);
@@ -24,14 +38,16 @@ function ManageNewsArticles() {
 
   const handleSearch = async (searchTerm) => {
     setSearchTerm(searchTerm);
-  
-    if (searchTerm.trim() === '') {
+
+    if (searchTerm.trim() === "") {
       // If the search term is empty, show all news
       setFilteredNews([]);
     } else {
       // Otherwise, filter news based on the search term
       try {
-        const response = await axios.get(`https://api.fyp23s424.com/api/news/search/${searchTerm}`);
+        const response = await axios.get(
+          `https://api.fyp23s424.com/api/news/search/${searchTerm}`
+        );
         setFilteredNews(response.data.message);
       } catch (error) {
         console.log(error);
@@ -40,10 +56,10 @@ function ManageNewsArticles() {
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm('Confirm deletion?')) {
+    if (window.confirm("Confirm deletion?")) {
       try {
         await axios.delete(`https://api.fyp23s424.com/api/news/${id}`);
-        window.location.reload()
+        window.location.reload();
       } catch (error) {
         console.log(error);
       }
@@ -53,24 +69,30 @@ function ManageNewsArticles() {
   return (
     <>
       <div>
-      <NavbarSA />
+        <NavbarSA />
+        <img
+          className="bg"
+          src={bgmImage2}
+          alt="Background"
+          style={{ transform: `translateY(${scrollY * 0.001}px)` }}
+        />
       </div>
       <div className="">
         <div className="">
-        <h2>Manage News Articles</h2>
-        <SearchBar onSearch={handleSearch} />
+          <h2>Manage News Articles</h2>
+          <SearchBar onSearch={handleSearch} />
           <table className="table">
             <thead>
               <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Category</th>
-                <th>Date</th>
-                <th>Action</th>
+                <th style={{ background: "orange" }}>Title</th>
+                <th style={{ background: "orange" }}>Author</th>
+                <th style={{ background: "orange" }}>Category</th>
+                <th style={{ background: "orange" }}>Date</th>
+                <th style={{ background: "orange" }}>Action</th>
               </tr>
             </thead>
             <tbody>
-              {searchTerm.trim() === ''
+              {searchTerm.trim() === ""
                 ? news.map((article) => (
                     <tr key={article._id}>
                       <td>{article.title}</td>

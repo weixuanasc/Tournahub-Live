@@ -1,17 +1,31 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import NavbarSA from './NavbarSA';
-import './tableContainer.css'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import NavbarSA from "./NavbarSA";
+import "./tableContainer.css";
+import bgmImage2 from "./images/details.jpg";
 
 function VerifyUsers() {
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [scrollY, setScrollY] = useState(0);
+  //scrolling animation
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('https://api.fyp23s424.com/PendingUsers');
+        const response = await axios.get("https://api.fyp23s424.com/PendingUsers");
         setUsers(response.data);
       } catch (error) {
         console.log(error);
@@ -22,24 +36,34 @@ function VerifyUsers() {
   }, []);
 
   const handleApprove = async (id) => {
-    if (window.confirm('Confirm approval?')) {
+    if (window.confirm("Confirm approval?")) {
       try {
         await axios.put(`https://api.fyp23s424.com/approveUser/${id}`);
-        window.location.reload()
+        window.location.reload();
       } catch (error) {
         console.log(error);
       }
     }
-  }
+  };
 
-  const showPDF=(verification)=>{
-    window.open(`https://api.fyp23s424.com/verify/${verification}`, "_blank", "noreferrer")
-  }
+  const showPDF = (verification) => {
+    window.open(
+      `https://api.fyp23s424.com/verify/${verification}`,
+      "_blank",
+      "noreferrer"
+    );
+  };
 
   return (
     <>
       <div>
-      <NavbarSA />
+        <NavbarSA />{" "}
+        <img
+          className="bg"
+          src={bgmImage2}
+          alt="Background"
+          style={{ transform: `translateY(${scrollY * 0.001}px)` }}
+        />
       </div>
       <div className="">
         <div className="">
@@ -47,12 +71,12 @@ function VerifyUsers() {
           <table className="table">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>User Type</th>
-                <th>Verification</th>
-                <th>isActive</th>
-                <th>Action</th>
+                <th style={{ background: "orange" }}>Name</th>
+                <th style={{ background: "orange" }}>Email</th>
+                <th style={{ background: "orange" }}>User Type</th>
+                <th style={{ background: "orange" }}>Verification</th>
+                <th style={{ background: "orange" }}>isActive</th>
+                <th style={{ background: "orange" }}>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -76,15 +100,15 @@ function VerifyUsers() {
                     >
                       Show PDF
                     </button>
-                </td>
-              </tr>
-            ))}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
       </div>
     </>
   );
-};
+}
 
 export default VerifyUsers;

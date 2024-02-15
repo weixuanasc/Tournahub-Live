@@ -5,12 +5,26 @@ import { loadStripe } from "@stripe/stripe-js";
 import WebStoriesIcon from "@mui/icons-material/WebStories";
 import SportsBasketballIcon from "@mui/icons-material/SportsBasketball";
 import FeedIcon from "@mui/icons-material/Feed";
+import bgmImage2 from "./images/details.jpg";
 // Replace with actual Stripe publishable key
 const stripePromise = loadStripe(
   "pk_test_51OZDZ5GNBcwxwaFCTi4kYxQqVaQsTqdeNA0I7cW8bm3CMJoXTKwr4wEuWaljsv1mxUxvPbLu6GXec9YjiZ6fIm3I00LDt1cOVq"
 );
 
 function SponsorshipModels() {
+  const [scrollY, setScrollY] = useState(0);
+  //scrolling animation
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const handleCheckoutIcon = async () => {
     try {
       const response = await axios.post(
@@ -72,6 +86,12 @@ function SponsorshipModels() {
     <section className="Sframe">
       <div className="product">
         <div className="description">
+          <img
+            className="bg"
+            src={bgmImage2}
+            alt="Background"
+            style={{ transform: `translateY(${scrollY * 0.001}px)` }}
+          />
           <h3>
             <WebStoriesIcon style={{ marginRight: "10px", fontSize: 45 }} />
             Sponsor Logo
